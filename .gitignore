@@ -1,0 +1,42 @@
+# Patient data and slide-level derivatives
+/dataset/
+**/*.ndpi
+**/*.svs
+**/*.mrxs
+**/*.tif
+**/*.tiff
+**/*.h5
+**/*.hdf5
+**/*.geojson
+**/features_uni_v2/
+**/features_conch_v15/
+
+# Training outputs and checkpoints
+/scripts/result/
+/runs/
+/checkpoints/
+**/*.pth
+**/*.pt
+**/*.ckpt
+
+# Logs, caches, environments, and build artifacts
+*.log
+*.out
+*.aux
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.DS_Store
+
+# Generated manuscripts and row-level prediction tables
+/writing/main.pdf
+**/test_predictions.csv
+**/*slide_predictions.csv
+**/*manifest.csv
+**/*manifest.json
+**/*case_summary.csv

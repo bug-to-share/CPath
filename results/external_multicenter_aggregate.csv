@@ -1,0 +1,2 @@
+evaluation,threshold,n_slides,n_malt,n_non_malt,auroc,auprc,accuracy,sensitivity,specificity,precision,f1
+multicenter_posthoc_reviewed,0.5,168,152,16,0.8721,0.9733,0.9107,0.9342,0.6875,0.9660,0.9498
