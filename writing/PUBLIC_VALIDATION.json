@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-04",
+  "scope": "screened public writing export",
+  "file_content_scan": "passed",
+  "pdf_text_link_attachment_scan": "passed",
+  "png_metadata_scan": "passed",
+  "graphics_visual_review": "passed",
+  "original_identifier_matches": 0,
+  "publication_slide_code_matches": 0,
+  "credential_pattern_matches": 0,
+  "row_level_csv_headers": 0,
+  "csv_files_screened": 107,
+  "aggregate_metric_csv_files_equal_to_local_source": 60,
+  "latex_build_checks": {
+    "draft_v7_5_revised/build/main_review.log": "passed",
+    "draft_v7_5_revised/build/main.log": "passed",
+    "draft_v7_5_revised/build/supplement.log": "passed",
+    "draft_v8_restructured/build/review.log": "passed",
+    "draft_v8_restructured/build/main.log": "passed",
+    "draft_v8_restructured/build/supplement.log": "passed"
+  },
+  "reading_pdfs": {
+    "draft_v8_restructured/Supplementary_information_v8.pdf": {
+      "pages": 13,
+      "bytes": 461698
+    },
+    "draft_v8_restructured/MALT_SS_manuscript_v8_with_line_numbers.pdf": {
+      "pages": 16,
+      "bytes": 423614
+    },
+    "draft_v8_restructured/MALT_SS_manuscript_v8.pdf": {
+      "pages": 16,
+      "bytes": 405935
+    },
+    "draft_v7_5_revised/Supplementary_information_v7_5.pdf": {
+      "pages": 31,
+      "bytes": 549089
+    },
+    "draft_v7_5_revised/MALT_SS_manuscript_v7_5.pdf": {
+      "pages": 18,
+      "bytes": 1966442
+    },
+    "draft_v7_5_revised/MALT_SS_manuscript_v7_5_with_line_numbers.pdf": {
+      "pages": 18,
+      "bytes": 1984692
+    },
+    "review_synthesis_v7_5_20261104/审稿意见综合总结与改进计划.pdf": {
+      "pages": 6,
+      "bytes": 369005
+    }
+  },
+  "source_files_checked_unchanged": 2617,
+  "source_git_index_unchanged": true,
+  "limitations": "Identifier and credential screening is a targeted check, not a proof of anonymity; clinical row-level and image material are excluded by design."
+}

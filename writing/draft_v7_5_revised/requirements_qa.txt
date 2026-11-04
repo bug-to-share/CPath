@@ -1,0 +1,2 @@
+PyMuPDF==1.28.0
+# Rendering uses requirements_render.txt; QA was run with system Python.

@@ -1,0 +1,40 @@
+\documentclass[10pt,a4paper]{article}
+\input{preamble}
+\fancyhead[R]{\small Supplementary information}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\renewcommand{\thesubsection}{S\arabic{subsection}}
+\begin{document}
+\begin{center}\fbox{\begin{minipage}{.92\textwidth}\small
+\textbf{Public repository copy -- filtered, not the complete submission draft.}
+Tissue images, individual-slide plots, case-level tables and row-level source data
+are withheld. Marked omissions preserve the original numbering and captions.
+References to Source Data describe the local research archive; only screened
+aggregate tables are distributed here. Reported aggregate estimates are unchanged.
+\end{minipage}}\end{center}\medskip
+\begin{center}
+{\Large\bfseries Supplementary information}\par\medskip
+{\large Foundation-model-based whole-slide classification of salivary gland MALT lymphoma and Sjögren's syndrome}
+\end{center}
+\section*{Supplementary Methods}
+\input{sections/supplement_equations}
+\input{sections/supplement_methods}
+\clearpage
+\section*{Supplementary Tables}
+\input{tables/S1_historical}
+\input{tables/S2_external}
+\input{tables/S3_matched}
+\input{tables/S4_screen}
+\input{tables/S5_all_runs}
+\input{tables/S6_linear}
+\input{tables/S7_ensembles}
+\input{tables/S8_sampling}
+\input{tables/S9_regions}
+\clearpage
+\input{sections/supplement_figures}
+\clearpage
+\begingroup\small\setlength{\bibsep}{3pt}
+\bibliographystyle{unsrtnat}\bibliography{references}
+\endgroup
+\end{document}

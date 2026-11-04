@@ -1,0 +1,19 @@
+\begin{table}[tbp]\centering
+\caption{Retained Hybrid performance with conditional 95\% intervals}\label{tab:primary}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.22\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}>{\raggedright\arraybackslash}p{0.34\textwidth}}
+\toprule
+\textbf{Metric} & \textbf{Internal validation} & \textbf{External evaluation} \\
+\midrule
+AUROC & 0.9599 (0.9046--0.9967) & 0.8721 (0.7364--0.9758) \\
+AP & 0.9514 (0.8864--0.9965) & 0.9733 (0.9365--0.9971) \\
+Sensitivity & 95.65\% (79.01\%--99.23\%) & 93.42\% (88.31\%--96.39\%) \\
+Specificity & 80.77\% (62.12\%--91.49\%) & 68.75\% (44.40\%--85.84\%) \\
+Accuracy & 87.76\% (75.76\%--94.27\%) & 91.07\% (85.79\%--94.51\%) \\
+PPV & 81.48\% (63.30\%--91.82\%) & 96.60\% (92.29\%--98.54\%) \\
+NPV & 95.45\% (78.20\%--99.19\%) & 52.38\% (32.37\%--71.66\%) \\
+Balanced accuracy & 88.21\% & 81.09\% \\
+\bottomrule\end{tabular}
+
+\par\medskip\footnotesize Threshold metrics use 0.5. AUROC and AP intervals use 2,000 class-stratified WSI bootstrap draws; proportion intervals use Wilson's method. These intervals condition on fitted predictions and do not adjust for selection or patient clustering.
+\end{table}

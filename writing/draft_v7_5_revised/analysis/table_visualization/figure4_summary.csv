@@ -1,0 +1,17 @@
+panel,variant,scope,metric,n_runs,mean,sd
+a,hybrid_control,internal,auroc,5,0.9347826086956521,0.013377926421404618
+a,attention_l2,internal,auroc,5,0.9341137123745821,0.008411221632079795
+a,mean_logistic,internal,auroc,1,0.9314381270903008,
+a,l2mean_logistic,internal,auroc,1,0.9247491638795988,
+b,hybrid_control,external,auroc,5,0.8055921052631578,0.12994832795142136
+b,attention_l2,external,auroc,5,0.8060855263157893,0.09161503481751186
+b,mean_logistic,external,auroc,1,0.8334703947368421,
+b,l2mean_logistic,external,auroc,1,0.846217105263158,
+c,hybrid_control,external,sensitivity,5,0.4921052631578947,0.19211202223149018
+c,attention_l2,external,sensitivity,5,0.5565789473684211,0.11228626973584588
+c,mean_logistic,external,sensitivity,1,0.4539473684210526,
+c,l2mean_logistic,external,sensitivity,1,0.4605263157894737,
+d,hybrid_control,external,specificity,5,0.825,0.128086884574495
+d,attention_l2,external,specificity,5,0.8125,0.1711632992203644
+d,mean_logistic,external,specificity,1,0.9375,
+d,l2mean_logistic,external,specificity,1,0.9375,

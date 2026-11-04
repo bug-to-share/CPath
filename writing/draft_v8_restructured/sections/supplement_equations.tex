@@ -1,0 +1,183 @@
+% Restored from ../methods_hybrid_evidence_mil.tex and checked against
+% ../../scripts/ss_experiment_suite.py: GatedAttentionPool,
+% HybridEvidenceMILEncoder and SlideClassifier. This file is maintained by hand.
+\subsection{Hybrid-Evidence MIL}
+
+\paragraph{Task formulation and feature projection.}
+Each WSI was represented by a sampled feature bag
+$X=\{\mathbf{x}_i\}_{i=1}^{N}$ and its associated patch coordinates
+$(a_i,b_i)$, where $N=512$ and $\mathbf{x}_i\in\mathbb{R}^{1536}$.
+The slide label was $y=1$ for MALT and $y=0$ for SS.
+No patch-level labels were used. A shared projection placed all features in a
+$D=256$ dimensional hidden space:
+\begin{equation}\label{eq:projection}
+ \mathbf{h}_i = \operatorname{Dr}_{0.3}\!\left[
+  \operatorname{GELU}\!\left(\operatorname{LN}
+  (\mathbf{W}_{p}\mathbf{x}_i+\mathbf{b}_{p})\right)\right],
+ \qquad \mathbf{h}_i\in\mathbb{R}^{D}.
+\end{equation}
+Here $\operatorname{LN}$ denotes layer normalization and $\operatorname{Dr}_{0.3}$
+denotes dropout with probability 0.3 during training; dropout is disabled during
+inference. All vectors below are column vectors, and $[\,\cdot\,;\,\cdot\,]$
+denotes concatenation along the feature dimension.
+
+\paragraph{Gated attention evidence.}
+Gated pooling followed the attention mechanism of Ilse and colleagues
+\citep{ref5}, with an additional value transformation implemented in the archived
+model. For a sequence $Z=\{\mathbf{z}_j\}_{j=1}^{L}$ of $D$ dimensional vectors,
+define the pooling operator $\mathcal{G}_{\theta}$ as
+\begin{subequations}\label{eq:gated-pool}
+\begin{align}
+ \mathbf{t}_j &= \operatorname{Dr}_{0.3}
+     \!\left[\operatorname{ReLU}(\mathbf{W}_{v}\mathbf{z}_j+\mathbf{b}_{v})\right],
+     \label{eq:pool-value}\\
+ \ell_j &= \mathbf{w}_{a}^{\mathsf T}
+    \left[\tanh(\mathbf{V}\mathbf{t}_j+\mathbf{b}_{V})
+     \odot\operatorname{sigmoid}(\mathbf{U}\mathbf{t}_j+\mathbf{b}_{U})\right]+b_a,
+     \label{eq:pool-logit}\\
+ \alpha_j &= \frac{\exp(\ell_j)}{\sum_{l=1}^{L}\exp(\ell_l)},
+ \qquad \mathcal{G}_{\theta}(Z)=\sum_{j=1}^{L}\alpha_j\mathbf{t}_j.
+     \label{eq:pool-sum}
+\end{align}
+\end{subequations}
+The symbol $\odot$ denotes element-wise multiplication. All attention and value
+matrices map between $D$ dimensional spaces. The attention evidence vector was
+$\mathbf{e}_{\mathrm{att}}=\mathcal{G}_{\theta_A}(\{\mathbf{h}_i\}_{i=1}^{N})$.
+Thus, the pooling weights multiply transformed values $\mathbf{t}_i$.
+The regional branch used the same operator with independently learned parameters
+$\theta_R$.
+
+\paragraph{Distribution evidence.}
+The center and heterogeneity of the sampled bag were summarized by two separate
+vectors:
+\begin{subequations}\label{eq:distribution}
+\begin{align}
+ \mathbf{e}_{\mu} &= \frac{1}{N}\sum_{i=1}^{N}\mathbf{h}_i,\\
+ \mathbf{e}_{\sigma} &=
+ \left[\frac{1}{N-1}\sum_{i=1}^{N}
+       (\mathbf{h}_i-\mathbf{e}_{\mu})^{\odot 2}\right]^{\odot 1/2}.
+\end{align}
+\end{subequations}
+Powers and square roots in Eq.~\eqref{eq:distribution} are element-wise. The
+sample denominator $N-1$ matches the standard deviation used in the code.
+
+\paragraph{Prototype-margin evidence.}
+Two latent prototype banks indexed by $c\in\{0,1\}$ each contained
+$K=8$ learnable prototypes
+$\mathbf{p}_{c,r}\in\mathbb{R}^{D}$. Let a hat denote the implemented
+$\ell_2$ normalization, with its numerical safeguard for zero norms.
+The maximum cosine similarity within each bank and the bank-1-minus-bank-0 margin
+were
+\begin{subequations}\label{eq:prototype}
+\begin{align}
+ s_{i,c} &= \max_{1\leq r\leq K}
+       \widehat{\mathbf{h}}_i^{\mathsf T}\widehat{\mathbf{p}}_{c,r},
+       \qquad m_i=s_{i,1}-s_{i,0},\label{eq:margin}\\
+ k &= \min(32,N),\qquad
+ I_{+}=\operatorname{TopKIdx}(\{m_i\},k),\qquad
+ I_{-}=\operatorname{TopKIdx}(\{-m_i\},k),\\
+ \mathbf{e}_{+} &= \frac{1}{k}\sum_{i\in I_{+}}\mathbf{h}_i,
+ \qquad \mathbf{e}_{-}=\frac{1}{k}\sum_{i\in I_{-}}\mathbf{h}_i.
+\end{align}
+\end{subequations}
+$\operatorname{TopKIdx}$ returns indices of the $k$ largest entries. The high-
+and low-margin vectors therefore average the instances with the largest and
+smallest margins, respectively; the selected values need not all have the same
+sign. Prototypes were optimized through differentiable similarity and margin
+statistics in the slide-level classification objective. The hard top-$k$ index
+selections were discrete; no additional prototype-specific loss or regional
+labels were used. The bank indices do not identify validated MALT or SS
+morphology, and a larger margin is not constrained to increase the final MALT score.
+
+\paragraph{Coordinate-ordered groups and low-margin evidence.}
+To form coordinate-ordered groups, let $\pi$ be the permutation obtained by
+sorting the implemented coordinate key $10^6b_i+a_i$. The ordered hidden
+sequence was partitioned using the code's chunk operation into $Q\leq16$
+consecutive non-empty chunks $C_j$ (16 equal chunks for the 512 sampled patches).
+Group tokens and the combined low-margin/regional vector were
+\begin{subequations}\label{eq:regional}
+\begin{align}
+ \mathbf{r}_j &= \frac{1}{|C_j|}\sum_{l\in C_j}\mathbf{h}_{\pi(l)},
+        \qquad j=1,\ldots,Q,\\
+ \mathbf{e}_{\mathrm{reg}} &=
+       \mathcal{G}_{\theta_R}(\{\mathbf{r}_j\}_{j=1}^{Q}),
+       \qquad \mathbf{e}_{\mathrm{nr}}=\mathbf{e}_{-}+\mathbf{e}_{\mathrm{reg}}.
+\end{align}
+\end{subequations}
+The regional operator includes its own value transformation from
+Eq.~\eqref{eq:pool-value}. Coordinates determine group membership, but the
+subsequent pooling is invariant to the order of the group tokens. The branch
+has no explicit intergroup distances, adjacency or positional encoding.
+Equal-sized groups of sampled instances were not anatomical regions and can
+span different physical extents.
+
+\paragraph{Similarity and margin statistics.}
+Eight scalar statistics supplemented the evidence vectors. Define
+$T_c=\operatorname{TopKIdx}(\{s_{i,c}\},k)$,
+$\bar{s}_{c}^{\mathrm{top}}=k^{-1}\sum_{i\in T_c}s_{i,c}$ and
+$\bar{m}=N^{-1}\sum_i m_i$. Then
+\begin{subequations}\label{eq:statistics}
+\begin{align}
+ s_m &= \left[\frac{1}{N-1}\sum_{i=1}^{N}(m_i-\bar m)^2\right]^{1/2},\\
+ \rho_0 &= \frac{1}{N}\sum_{i=1}^{N}\mathbb{I}(m_i>0),\qquad
+ \rho_{\bar m}=\frac{1}{N}\sum_{i=1}^{N}\mathbb{I}(m_i>\bar m),\\
+ \mathbf{u} &= \bigl[\bar{s}_{0}^{\mathrm{top}},\bar{s}_{1}^{\mathrm{top}},
+       \bar m,s_m,\max_i m_i,\min_i m_i,\rho_0,\rho_{\bar m}\bigr]^{\mathsf T}
+       \in\mathbb{R}^{8}.
+\end{align}
+\end{subequations}
+$\mathbb{I}$ is the indicator function. The top-similarity sets $T_c$ are computed
+separately for the two banks and need not coincide with the margin-based sets
+$I_{+}$ and $I_{-}$.
+
+\paragraph{Learned gating, weighted concatenation and classification.}
+The five evidence vectors were ordered as
+$(\mathbf{e}_1,\ldots,\mathbf{e}_5)=
+(\mathbf{e}_{\mathrm{att}},\mathbf{e}_{\mu},\mathbf{e}_{\sigma},
+ \mathbf{e}_{+},\mathbf{e}_{\mathrm{nr}})$.
+A two-layer gate received the unweighted vectors and statistics:
+\begin{subequations}\label{eq:fusion}
+\begin{align}
+ \mathbf{q} &= [\mathbf{e}_1;\mathbf{e}_2;\mathbf{e}_3;\mathbf{e}_4;
+                   \mathbf{e}_5;\mathbf{u}]\in\mathbb{R}^{5D+8},\\
+ \boldsymbol{\gamma} &= \operatorname{softmax}\!\left(
+    \mathbf{W}_{g2}\operatorname{Dr}_{0.3}\!\left[
+       \operatorname{GELU}(\mathbf{W}_{g1}\mathbf{q}+\mathbf{b}_{g1})\right]
+       +\mathbf{b}_{g2}\right)\in\mathbb{R}^{5},\label{eq:gate}\\
+ \widetilde{\mathbf{q}} &= [\gamma_1\mathbf{e}_1;\gamma_2\mathbf{e}_2;
+       \gamma_3\mathbf{e}_3;\gamma_4\mathbf{e}_4;\gamma_5\mathbf{e}_5;
+       \mathbf{u}],\label{eq:weighted-concat}\\
+ \mathbf{z} &= \operatorname{Dr}_{0.3}\!\left[
+       \operatorname{GELU}\!\left(\operatorname{LN}
+       (\mathbf{W}_{f}\widetilde{\mathbf{q}}+\mathbf{b}_{f})\right)\right],\\
+ a &= \mathbf{w}_{o}^{\mathsf T}\operatorname{Dr}_{0.3}\!\left[
+       \operatorname{ReLU}\!\left(\operatorname{LN}
+       (\mathbf{W}_{c}\mathbf{z}+\mathbf{b}_{c})\right)\right]+b_o,
+       \qquad p=\operatorname{sigmoid}(a).
+\end{align}
+\end{subequations}
+The gate dimensions were $\mathbf{W}_{g1}\in\mathbb{R}^{D\times(5D+8)}$
+and $\mathbf{W}_{g2}\in\mathbb{R}^{5\times D}$;
+$\mathbf{W}_{f}\in\mathbb{R}^{D\times(5D+8)}$ and
+$\mathbf{W}_{c}\in\mathbb{R}^{D\times D}$.
+Each $\gamma_j$ is non-negative and $\sum_j\gamma_j=1$.
+Equation~\eqref{eq:weighted-concat} preserves five weighted feature blocks;
+the eight statistics enter fusion without multiplication by a branch weight.
+The gate supplies sample-dependent feature scaling, rather than a distribution
+of causal contributions. Branch norms, the learned fusion transformation and
+the ungated statistics also affect the classifier. The output $p$ is an
+uncalibrated MALT model score in $[0,1]$.
+
+\paragraph{Training objective.}
+For a minibatch $\mathcal{B}$ of slides, the weighted binary cross-entropy was
+\begin{equation}\label{eq:loss}
+ \mathcal{L}=-\frac{1}{|\mathcal{B}|}\sum_{b\in\mathcal{B}}
+ \left[w_{+}y_b\log p_b+(1-y_b)\log(1-p_b)\right],
+ \qquad w_{+}=\frac{77}{67}.
+\end{equation}
+The implementation evaluated this objective directly from logits for numerical
+stability. The positive-class weight was the ratio of the 77 SS to 67 MALT
+training slides. Class weighting changes the optimum of binary cross-entropy;
+the sigmoid output was not assumed to equal an unweighted posterior probability.
+No calibration model was fitted to either evaluation set. Optimization and the
+archived checkpoint are described below.

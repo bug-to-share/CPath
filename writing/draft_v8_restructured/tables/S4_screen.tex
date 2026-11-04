@@ -1,0 +1,19 @@
+{\small\begin{longtable}{>{\raggedright\arraybackslash}p{0.43\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}}
+\caption{All ten configurations in the three-seed algorithm screen}\\
+\toprule
+\textbf{Configuration} & \textbf{Validation AUROC} & \textbf{External AUROC} \\
+\midrule\endfirsthead
+\toprule
+\textbf{Configuration} & \textbf{Validation AUROC} & \textbf{External AUROC} \\
+\midrule\endhead
+Hybrid control & 0.9353 $\pm$ 0.0070 & 0.7633 $\pm$ 0.1581 \\
+Matched attention & 0.9348 $\pm$ 0.0044 & 0.7270 $\pm$ 0.1035 \\
+Hybrid + L2 & 0.9337 $\pm$ 0.0140 & 0.7166 $\pm$ 0.2016 \\
+Attention + L2 & 0.9365 $\pm$ 0.0060 & 0.7726 $\pm$ 0.1111 \\
+Attention masking & 0.9348 $\pm$ 0.0073 & 0.7356 $\pm$ 0.0940 \\
+Original-space attention & 0.9041 $\pm$ 0.0463 & 0.6051 $\pm$ 0.2023 \\
+Feature-subspace attention & 0.8701 $\pm$ 0.0174 & 0.7876 $\pm$ 0.0617 \\
+Subspace, batch32/lr3e-4 & 0.8790 $\pm$ 0.0070 & 0.7707 $\pm$ 0.0504 \\
+Hybrid, two bags & 0.9337 $\pm$ 0.0245 & 0.6886 $\pm$ 0.2175 \\
+Hybrid, two bags + KL & 0.9337 $\pm$ 0.0235 & 0.7307 $\pm$ 0.1694 \\
+\bottomrule\end{longtable}}

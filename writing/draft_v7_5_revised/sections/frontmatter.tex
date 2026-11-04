@@ -1,0 +1,17 @@
+\title{Weakly supervised whole-slide classification of salivary gland MALT lymphoma versus Sjögren's syndrome}
+\author{\missing{[MISSING A01: author names, affiliations and author order]}}
+\date{4 November 2026 \quad | \quad Draft v7.5}
+\maketitle
+\textbf{Correspondence:} \missing{[MISSING A02: corresponding author and contact details]}
+
+\begin{abstract}
+\textbf{Background:} Salivary gland MALT lymphoma and Sjögren's syndrome (SS) can share lymphoid-rich histological appearances. We evaluated a weakly supervised whole-slide classifier that combines multiple summaries of fixed pathology foundation-model features to distinguish these diagnostic groups.
+
+\textbf{Methods:} The internal cohort contained 193 whole-slide images: 144 for training and 49 for validation. Hybrid-Evidence multiple-instance learning used fixed UNI2-h embeddings and a checkpoint selected by internal validation AUROC. External evaluation used the same checkpoint on 168 slides (152 MALT, 16 SS) with mixed archive stain tags awaiting confirmation. Comparisons included alternative MIL implementations, an exploratory score ensemble and simple feature-based controls.
+
+\textbf{Results:} Hybrid achieved internal validation AUROC 0.9599 (95\% CI 0.9046--0.9967), sensitivity 95.65\% and specificity 80.77\% at threshold 0.5. Its AUROC difference from ABMIL was 0.0100 (95\% CI $-0.0184$ to 0.0452). The three-model ensemble achieved internal AUROC 0.9649. External Hybrid AUROC was 0.8721 (95\% CI 0.7364--0.9758), with sensitivity 93.42\% and specificity 68.75\%. After post hoc exclusion of IHC/special-stain-tagged slides, AUROC was 0.8689 and sensitivity 75.61\%; this was not verified H\&E-only validation.
+
+\textbf{Conclusions:} Hybrid-Evidence MIL supported retrospective MALT--SS discrimination using fixed pathology representations. Validation reuse, unverified patient-level separation and mixed external material limit clinical interpretation. Independent evaluation with verified cohort metadata is required before diagnostic utility can be assessed.
+
+\textbf{Keywords:} salivary gland; MALT lymphoma; Sjögren's syndrome; whole-slide imaging; multiple-instance learning
+\end{abstract}

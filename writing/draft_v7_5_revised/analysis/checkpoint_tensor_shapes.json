@@ -1,0 +1,369 @@
+{
+  "hybrid_evidence_mil": {
+    "encoder.prototypes": [
+      2,
+      8,
+      256
+    ],
+    "encoder.project.0.weight": [
+      256,
+      1536
+    ],
+    "encoder.project.0.bias": [
+      256
+    ],
+    "encoder.project.1.weight": [
+      256
+    ],
+    "encoder.project.1.bias": [
+      256
+    ],
+    "encoder.attention.value.0.weight": [
+      256,
+      256
+    ],
+    "encoder.attention.value.0.bias": [
+      256
+    ],
+    "encoder.attention.attention_a.0.weight": [
+      256,
+      256
+    ],
+    "encoder.attention.attention_a.0.bias": [
+      256
+    ],
+    "encoder.attention.attention_b.0.weight": [
+      256,
+      256
+    ],
+    "encoder.attention.attention_b.0.bias": [
+      256
+    ],
+    "encoder.attention.attention_c.weight": [
+      1,
+      256
+    ],
+    "encoder.attention.attention_c.bias": [
+      1
+    ],
+    "encoder.region_pool.value.0.weight": [
+      256,
+      256
+    ],
+    "encoder.region_pool.value.0.bias": [
+      256
+    ],
+    "encoder.region_pool.attention_a.0.weight": [
+      256,
+      256
+    ],
+    "encoder.region_pool.attention_a.0.bias": [
+      256
+    ],
+    "encoder.region_pool.attention_b.0.weight": [
+      256,
+      256
+    ],
+    "encoder.region_pool.attention_b.0.bias": [
+      256
+    ],
+    "encoder.region_pool.attention_c.weight": [
+      1,
+      256
+    ],
+    "encoder.region_pool.attention_c.bias": [
+      1
+    ],
+    "encoder.gate.0.weight": [
+      256,
+      1288
+    ],
+    "encoder.gate.0.bias": [
+      256
+    ],
+    "encoder.gate.3.weight": [
+      5,
+      256
+    ],
+    "encoder.gate.3.bias": [
+      5
+    ],
+    "encoder.fusion.0.weight": [
+      256,
+      1288
+    ],
+    "encoder.fusion.0.bias": [
+      256
+    ],
+    "encoder.fusion.1.weight": [
+      256
+    ],
+    "encoder.fusion.1.bias": [
+      256
+    ],
+    "classifier.0.weight": [
+      256,
+      256
+    ],
+    "classifier.0.bias": [
+      256
+    ],
+    "classifier.1.weight": [
+      256
+    ],
+    "classifier.1.bias": [
+      256
+    ],
+    "classifier.4.weight": [
+      1,
+      256
+    ],
+    "classifier.4.bias": [
+      1
+    ]
+  },
+  "abmil": {
+    "encoder.model.pre_attention_layers.0.weight": [
+      1536,
+      1536
+    ],
+    "encoder.model.pre_attention_layers.0.bias": [
+      1536
+    ],
+    "encoder.model.image_pooler.attention_heads.0.0.weight": [
+      512,
+      1536
+    ],
+    "encoder.model.image_pooler.attention_heads.0.0.bias": [
+      512
+    ],
+    "encoder.model.image_pooler.gating_layers.0.0.weight": [
+      512,
+      1536
+    ],
+    "encoder.model.image_pooler.gating_layers.0.0.bias": [
+      512
+    ],
+    "encoder.model.image_pooler.branching_layers.0.weight": [
+      1,
+      512
+    ],
+    "encoder.model.image_pooler.branching_layers.0.bias": [
+      1
+    ],
+    "encoder.model.post_attention_layers.0.weight": [
+      1536,
+      1536
+    ],
+    "encoder.model.post_attention_layers.0.bias": [
+      1536
+    ],
+    "classifier.0.weight": [
+      256,
+      1536
+    ],
+    "classifier.0.bias": [
+      256
+    ],
+    "classifier.1.weight": [
+      256
+    ],
+    "classifier.1.bias": [
+      256
+    ],
+    "classifier.4.weight": [
+      1,
+      256
+    ],
+    "classifier.4.bias": [
+      1
+    ]
+  },
+  "clam_sb": {
+    "encoder.pool.value.0.weight": [
+      256,
+      1536
+    ],
+    "encoder.pool.value.0.bias": [
+      256
+    ],
+    "encoder.pool.attention_a.0.weight": [
+      256,
+      256
+    ],
+    "encoder.pool.attention_a.0.bias": [
+      256
+    ],
+    "encoder.pool.attention_b.0.weight": [
+      256,
+      256
+    ],
+    "encoder.pool.attention_b.0.bias": [
+      256
+    ],
+    "encoder.pool.attention_c.weight": [
+      1,
+      256
+    ],
+    "encoder.pool.attention_c.bias": [
+      1
+    ],
+    "classifier.0.weight": [
+      256,
+      256
+    ],
+    "classifier.0.bias": [
+      256
+    ],
+    "classifier.1.weight": [
+      256
+    ],
+    "classifier.1.bias": [
+      256
+    ],
+    "classifier.4.weight": [
+      1,
+      256
+    ],
+    "classifier.4.bias": [
+      1
+    ]
+  },
+  "rrtmil": {
+    "encoder.project.0.weight": [
+      256,
+      1536
+    ],
+    "encoder.project.0.bias": [
+      256
+    ],
+    "encoder.transformer.layers.0.self_attn.in_proj_weight": [
+      768,
+      256
+    ],
+    "encoder.transformer.layers.0.self_attn.in_proj_bias": [
+      768
+    ],
+    "encoder.transformer.layers.0.self_attn.out_proj.weight": [
+      256,
+      256
+    ],
+    "encoder.transformer.layers.0.self_attn.out_proj.bias": [
+      256
+    ],
+    "encoder.transformer.layers.0.linear1.weight": [
+      512,
+      256
+    ],
+    "encoder.transformer.layers.0.linear1.bias": [
+      512
+    ],
+    "encoder.transformer.layers.0.linear2.weight": [
+      256,
+      512
+    ],
+    "encoder.transformer.layers.0.linear2.bias": [
+      256
+    ],
+    "encoder.transformer.layers.0.norm1.weight": [
+      256
+    ],
+    "encoder.transformer.layers.0.norm1.bias": [
+      256
+    ],
+    "encoder.transformer.layers.0.norm2.weight": [
+      256
+    ],
+    "encoder.transformer.layers.0.norm2.bias": [
+      256
+    ],
+    "encoder.transformer.layers.1.self_attn.in_proj_weight": [
+      768,
+      256
+    ],
+    "encoder.transformer.layers.1.self_attn.in_proj_bias": [
+      768
+    ],
+    "encoder.transformer.layers.1.self_attn.out_proj.weight": [
+      256,
+      256
+    ],
+    "encoder.transformer.layers.1.self_attn.out_proj.bias": [
+      256
+    ],
+    "encoder.transformer.layers.1.linear1.weight": [
+      512,
+      256
+    ],
+    "encoder.transformer.layers.1.linear1.bias": [
+      512
+    ],
+    "encoder.transformer.layers.1.linear2.weight": [
+      256,
+      512
+    ],
+    "encoder.transformer.layers.1.linear2.bias": [
+      256
+    ],
+    "encoder.transformer.layers.1.norm1.weight": [
+      256
+    ],
+    "encoder.transformer.layers.1.norm1.bias": [
+      256
+    ],
+    "encoder.transformer.layers.1.norm2.weight": [
+      256
+    ],
+    "encoder.transformer.layers.1.norm2.bias": [
+      256
+    ],
+    "encoder.pool.value.0.weight": [
+      256,
+      256
+    ],
+    "encoder.pool.value.0.bias": [
+      256
+    ],
+    "encoder.pool.attention_a.0.weight": [
+      256,
+      256
+    ],
+    "encoder.pool.attention_a.0.bias": [
+      256
+    ],
+    "encoder.pool.attention_b.0.weight": [
+      256,
+      256
+    ],
+    "encoder.pool.attention_b.0.bias": [
+      256
+    ],
+    "encoder.pool.attention_c.weight": [
+      1,
+      256
+    ],
+    "encoder.pool.attention_c.bias": [
+      1
+    ],
+    "classifier.0.weight": [
+      256,
+      256
+    ],
+    "classifier.0.bias": [
+      256
+    ],
+    "classifier.1.weight": [
+      256
+    ],
+    "classifier.1.bias": [
+      256
+    ],
+    "classifier.4.weight": [
+      1,
+      256
+    ],
+    "classifier.4.bias": [
+      1
+    ]
+  }
+}

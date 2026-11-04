@@ -1,0 +1,35 @@
+\documentclass[11pt,a4paper]{article}
+\input{preamble}
+\renewcommand{\thetable}{S\arabic{table}}
+\renewcommand{\thefigure}{S\arabic{figure}}
+\renewcommand{\theequation}{S\arabic{equation}}
+\fancyhead[R]{\small Supplementary information}
+\begin{document}
+\begin{center}\fbox{\begin{minipage}{.92\textwidth}\small
+\textbf{Public repository copy -- filtered, not the complete submission draft.}
+Tissue images, individual-slide plots, case-level tables and row-level source data
+are withheld. Marked omissions preserve the original numbering and captions.
+References to Source Data describe the local research archive; only screened
+aggregate tables are distributed here. Reported aggregate estimates are unchanged.
+\end{minipage}}\end{center}\medskip
+{\Large\bfseries Supplementary information\par}
+\medskip
+{\large Weakly supervised whole-slide classification of salivary
+gland MALT lymphoma versus Sjögren's syndrome\par}
+\medskip
+Diagnostic counts and estimates correspond to the accompanying main manuscript.
+Completion markers identify pending author information, including hospital-held
+records awaiting incorporation. Throughout these materials, ``internal evaluation'' or ``holdout'' denotes the 49-slide validation set also used for checkpoint selection, not an independent test. Historical figure assets and numerical results are retained from v7; additional analyses appear in Tables S16--S19. Bold and underlined point estimates denote the best and second-best distinct values, respectively, within each stated comparison group; ties receive the same marking. Rankings are descriptive, not significance tests. All fixed-score intervals omit selection effects and unknown patient clustering.
+\input{sections/supplement_content}
+\input{sections/development_tables}
+\clearpage
+\input{sections/secondary_development_results}
+\clearpage
+\input{sections/extended_methods_archive}
+\input{sections/development_methods}
+\clearpage
+\begingroup\small
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+\endgroup
+\end{document}

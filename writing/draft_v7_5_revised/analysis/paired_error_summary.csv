@@ -1,0 +1,3 @@
+reference_model,candidate_model,threshold,n,both_correct,both_wrong,corrected_by_candidate,new_error_in_candidate,net_corrected,exact_mcnemar_two_sided_p,interpretation
+hybrid_evidence_mil,abmil,0.5,49,39,3,3,4,-1,1.0,descriptive paired threshold comparison; no superiority claim
+hybrid_evidence_mil,hybrid_clam_rrt_ensemble,0.5,49,42,5,1,1,0,1.0,descriptive paired threshold comparison; no superiority claim

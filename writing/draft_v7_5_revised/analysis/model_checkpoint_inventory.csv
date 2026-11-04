@@ -1,0 +1,5 @@
+model,parameter_count,buffer_elements,checkpoint_bytes,checkpoint_mib,checkpoint_sha256,checkpoint_strict_load,input_feature_dim,classifier_input_dim,classifier_hidden_dim,attention_head_dim,epochs_budget,batch_size,training_seed,num_patches,learning_rate,weight_decay,best_epoch
+hybrid_evidence_mil,1521672,0,6100597,5.8179826736450195,ccdffb739d5b65ee77324dd65843cfec8d045ab535ba07da873d2ff359cc4cdd,True,1536,256,256,256,30,8,42,512,5e-05,0.0001,15
+abmil,6690306,0,26768821,25.52873706817627,0ba7575387d882ba52ade4ee3e1c9a804572918c1396f66f30f48f3de9eb7a2f,True,1536,1536,256,512,50,16,42,512,5e-05,0.0001,37
+clam_sb,591874,0,2373557,2.2636003494262695,8c2e2a7db0b1eab7e1f1a4ceb31f1991b80336eea3e571b0eeca4878cea6f854,True,1536,256,256,256,20,8,42,512,5e-05,0.0001,16
+rrtmil,1711874,0,6863541,6.5455827713012695,55359c3518ba10c5332d7323ea89d586e3f18da9bb57e533c1ab870a6efd5fc6,True,1536,256,256,256,20,4,42,512,5e-05,0.0001,11

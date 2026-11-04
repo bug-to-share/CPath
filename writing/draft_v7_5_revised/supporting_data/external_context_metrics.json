@@ -1,0 +1,8 @@
+{
+  "n": 168,
+  "n_malt": 152,
+  "n_ss": 16,
+  "balanced_accuracy": 0.8108552631578947,
+  "constant_positive_accuracy": 0.9047619047619048,
+  "source": "Arithmetic summaries of unchanged external predictions; not a new evaluation"
+}

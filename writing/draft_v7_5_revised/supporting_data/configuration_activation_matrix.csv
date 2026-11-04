@@ -1,0 +1,6 @@
+configuration,attention,mean,standard_deviation,positive_margin_vector,negative_plus_regional,eight_statistics,gate
+attention_only,1,0,0,0,0,0,"learned, 5 positions"
+attention_mean_std,1,1,1,0,0,0,"learned, 5 positions"
+attention_mean_std_proto,1,1,1,1,0,1,"learned, 5 positions"
+full_equal_gate,1,1,1,1,1,1,equal
+full_learned_gate,1,1,1,1,1,1,"learned, 5 positions"

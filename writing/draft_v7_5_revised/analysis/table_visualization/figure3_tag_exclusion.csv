@@ -1,0 +1,9 @@
+cohort,metric,value
+Full external,auroc,0.8721217105263158
+After tag exclusion,auroc,0.8689024390243902
+Full external,sensitivity,0.9342105263157895
+After tag exclusion,sensitivity,0.7560975609756098
+Full external,specificity,0.6875
+After tag exclusion,specificity,0.6875
+Full external,balanced_accuracy,0.8108552631578947
+After tag exclusion,balanced_accuracy,0.7217987804878049

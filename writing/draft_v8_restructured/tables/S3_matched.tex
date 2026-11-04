@@ -1,0 +1,13 @@
+{\small\begin{longtable}{>{\raggedright\arraybackslash}p{0.27\textwidth}>{\raggedright\arraybackslash}p{0.17\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}}
+\caption{Three-seed controlled training comparison}\\
+\toprule
+\textbf{Configuration} & \textbf{Parameters} & \textbf{Validation AUROC} & \textbf{External AUROC} \\
+\midrule\endfirsthead
+\toprule
+\textbf{Configuration} & \textbf{Parameters} & \textbf{Validation AUROC} & \textbf{External AUROC} \\
+\midrule\endhead
+Matched attention & 658178 & 0.9348 $\pm$ 0.0044 & 0.7270 $\pm$ 0.1035 \\
+Full fixed scaling & 1190403 & 0.9398 $\pm$ 0.0153 & 0.7445 $\pm$ 0.1254 \\
+Full learned gate & 1521672 & 0.9353 $\pm$ 0.0070 & 0.7633 $\pm$ 0.1581 \\
+\bottomrule\end{longtable}}
+{\footnotesize Seeds 17, 29 and 43. Means $\pm$ sample SD. The algorithm screen reran the attention and learned-gate controls and reproduced them; those reruns are not new independent seeds.}

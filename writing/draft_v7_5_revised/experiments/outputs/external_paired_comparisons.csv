@@ -1,0 +1,4 @@
+scope,comparison,auroc_difference,difference_ci_low,difference_ci_high,hybrid_only_correct,other_only_correct,mcnemar_exact_p_exploratory,n_bootstrap,note
+external,Hybrid minus abmil,0.08182565789473684,-0.013579358552631619,0.20106907894736825,78,3,7.332294385792548e-20,10000,"Whole-model comparisons; unadjusted descriptive intervals and exploratory tests, not confirmatory family-wise inference."
+external,Hybrid minus clam_sb,0.21299342105263153,0.08429276315789469,0.352796052631579,57,3,6.253851603243987e-14,10000,"Whole-model comparisons; unadjusted descriptive intervals and exploratory tests, not confirmatory family-wise inference."
+external,Hybrid minus rrtmil,0.09786184210526316,0.041529605263157854,0.16488486842105265,10,1,0.01171875,10000,"Whole-model comparisons; unadjusted descriptive intervals and exploratory tests, not confirmatory family-wise inference."

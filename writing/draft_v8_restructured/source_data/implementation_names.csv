@@ -1,0 +1,13 @@
+code_id,display_name
+hybrid_clam_rrt_ensemble,Three-model ensemble
+hybrid_evidence_mil,Hybrid
+abmil,ABMIL
+mean,Mean pooling
+clam_sb,Local attention pooling (CLAM-style)
+dsmil,Local dual-stream pooling
+dtfd,Local two-tier attention
+transmil,Local transformer pooling
+rrtmil,Local grouped-region transformer
+proto_mil,Local prototype pooling
+dist_proto_mil,Distribution--prototype pooling
+titan,CONCH v1.5 + TITAN

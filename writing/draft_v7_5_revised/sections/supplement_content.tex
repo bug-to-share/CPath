@@ -1,0 +1,395 @@
+\begin{table}[H]\centering
+\caption{Model configurations}\label{tab:S1}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.367647\dimexpr\textwidth-14\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.073529\dimexpr\textwidth-14\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.088235\dimexpr\textwidth-14\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.117647\dimexpr\textwidth-14\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.088235\dimexpr\textwidth-14\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.117647\dimexpr\textwidth-14\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.147059\dimexpr\textwidth-14\tabcolsep\relax}}
+\toprule
+\textbf{Model} & \textbf{Seed} & \textbf{Epochs} & \textbf{LR} & \textbf{Batch} & \textbf{Patches} & \textbf{Best epoch} \\
+\midrule
+Three-model ensemble & 42 & N/A & N/A & N/A & 512 & N/A \\
+Hybrid-Evidence MIL & 42 & 30 & 5e-05 & 8 & 512 & 15 \\
+ABMIL & 42 & 50 & 5e-05 & 16 & 512 & 37 \\
+DTFD-style & 42 & 20 & 5e-05 & 8 & 512 & 11 \\
+CLAM-SB-style & 42 & 20 & 5e-05 & 8 & 512 & 16 \\
+RRTMIL-style & 42 & 20 & 5e-05 & 4 & 512 & 11 \\
+ProtoMIL-style & 42 & 20 & 5e-05 & 8 & 512 & 14 \\
+Mean pooling & 42 & 50 & 5e-05 & 16 & 512 & 35 \\
+TransMIL-style & 42 & 20 & 5e-05 & 4 & 512 & 14 \\
+DSMIL-style & 42 & 20 & 5e-05 & 8 & 512 & 17 \\
+Distribution-ProtoMIL & 42 & 20 & 5e-05 & 8 & 512 & 8 \\
+CONCH v1.5 + TITAN & 42 & 50 & 5e-05 & 1 & 1024 & 44 \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize All rows refer to the internal MALT/SS task. The ensemble has no separate training epochs.
+\end{table}
+
+\begingroup\footnotesize
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}p{.29\textwidth}p{.18\textwidth}p{.45\textwidth}@{}}
+\caption{Complete internal interval estimates}\label{tab:S2}\\
+\toprule Model & Metric & Estimate (95\% interval) \\ \midrule\endfirsthead
+\toprule Model & Metric & Estimate (95\% interval) \\ \midrule\endhead
+\midrule\multicolumn{3}{r}{Continued on the next page}\\\endfoot\bottomrule\endlastfoot
+
+Three-model ensemble & AUROC & \textbf{0.9649} (0.9097--1.0000) \\*
+
+ & AUPRC & \textbf{0.9576} (0.8930--1.0000) \\*
+
+ & Accuracy & \underline{87.76\%} (75.76\%--94.27\%) \\*
+
+ & Sensitivity & \underline{91.30\%} (73.20\%--97.58\%) \\*
+
+ & Specificity & 84.62\% (66.47\%--93.85\%) \\*
+
+ & PPV & 84.00\% (65.35\%--93.60\%) \\*
+
+ & NPV & 91.67\% (74.15\%--97.68\%) \\*
+
+ & F1 & 0.8750 (0.7777--0.9583) \\
+
+\addlinespace
+
+Hybrid-Evidence MIL & AUROC & \underline{0.9599} (0.9046--0.9967) \\*
+
+ & AUPRC & \underline{0.9514} (0.8864--0.9965) \\*
+
+ & Accuracy & \underline{87.76\%} (75.76\%--94.27\%) \\*
+
+ & Sensitivity & \textbf{95.65\%} (79.01\%--99.23\%) \\*
+
+ & Specificity & 80.77\% (62.12\%--91.49\%) \\*
+
+ & PPV & 81.48\% (63.30\%--91.82\%) \\*
+
+ & NPV & \underline{95.45\%} (78.20\%--99.19\%) \\*
+
+ & F1 & \underline{0.8800} (0.7925--0.9583) \\
+
+\addlinespace
+
+ABMIL & AUROC & 0.9498 (0.8879--0.9933) \\*
+
+ & AUPRC & 0.9396 (0.8675--0.9928) \\*
+
+ & Accuracy & 85.71\% (73.33\%--92.90\%) \\*
+
+ & Sensitivity & 82.61\% (62.86\%--93.02\%) \\*
+
+ & Specificity & 88.46\% (71.02\%--96.00\%) \\*
+
+ & PPV & 86.36\% (66.67\%--95.25\%) \\*
+
+ & NPV & 85.19\% (67.52\%--94.08\%) \\*
+
+ & F1 & 0.8444 (0.7273--0.9362) \\
+
+\addlinespace
+
+DTFD-style & AUROC & 0.9398 (0.8679--0.9916) \\*
+
+ & AUPRC & 0.9416 (0.8786--0.9922) \\*
+
+ & Accuracy & \underline{87.76\%} (75.76\%--94.27\%) \\*
+
+ & Sensitivity & 86.96\% (67.87\%--95.46\%) \\*
+
+ & Specificity & 88.46\% (71.02\%--96.00\%) \\*
+
+ & PPV & 86.96\% (67.87\%--95.46\%) \\*
+
+ & NPV & 88.46\% (71.02\%--96.00\%) \\*
+
+ & F1 & 0.8696 (0.7619--0.9565) \\
+
+\addlinespace
+
+CLAM-SB-style & AUROC & 0.9365 (0.8612--0.9933) \\*
+
+ & AUPRC & 0.9422 (0.8780--0.9930) \\*
+
+ & Accuracy & \underline{87.76\%} (75.76\%--94.27\%) \\*
+
+ & Sensitivity & \underline{91.30\%} (73.20\%--97.58\%) \\*
+
+ & Specificity & 84.62\% (66.47\%--93.85\%) \\*
+
+ & PPV & 84.00\% (65.35\%--93.60\%) \\*
+
+ & NPV & 91.67\% (74.15\%--97.68\%) \\*
+
+ & F1 & 0.8750 (0.7778--0.9583) \\
+
+\addlinespace
+
+RRTMIL-style & AUROC & 0.9281 (0.8328--0.9967) \\*
+
+ & AUPRC & 0.8400 (0.7022--0.9964) \\*
+
+ & Accuracy & \textbf{89.80\%} (78.24\%--95.56\%) \\*
+
+ & Sensitivity & \textbf{95.65\%} (79.01\%--99.23\%) \\*
+
+ & Specificity & 84.62\% (66.47\%--93.85\%) \\*
+
+ & PPV & 84.62\% (66.47\%--93.85\%) \\*
+
+ & NPV & \textbf{95.65\%} (79.01\%--99.23\%) \\*
+
+ & F1 & \textbf{0.8980} (0.8163--0.9787) \\
+
+\addlinespace
+
+ProtoMIL-style & AUROC & 0.9264 (0.8411--0.9849) \\*
+
+ & AUPRC & 0.9306 (0.8584--0.9862) \\*
+
+ & Accuracy & 85.71\% (73.33\%--92.90\%) \\*
+
+ & Sensitivity & 86.96\% (67.87\%--95.46\%) \\*
+
+ & Specificity & 84.62\% (66.47\%--93.85\%) \\*
+
+ & PPV & 83.33\% (64.15\%--93.32\%) \\*
+
+ & NPV & 88.00\% (70.04\%--95.83\%) \\*
+
+ & F1 & 0.8511 (0.7442--0.9362) \\
+
+\addlinespace
+
+Mean pooling & AUROC & 0.9247 (0.8411--0.9833) \\*
+
+ & AUPRC & 0.9332 (0.8663--0.9851) \\*
+
+ & Accuracy & 85.71\% (73.33\%--92.90\%) \\*
+
+ & Sensitivity & 78.26\% (58.10\%--90.34\%) \\*
+
+ & Specificity & \underline{92.31\%} (75.86\%--97.86\%) \\*
+
+ & PPV & \underline{90.00\%} (69.90\%--97.21\%) \\*
+
+ & NPV & 82.76\% (65.45\%--92.40\%) \\*
+
+ & F1 & 0.8372 (0.7109--0.9362) \\
+
+\addlinespace
+
+TransMIL-style & AUROC & 0.9231 (0.8428--0.9900) \\*
+
+ & AUPRC & 0.9180 (0.8295--0.9891) \\*
+
+ & Accuracy & 81.63\% (68.64\%--90.02\%) \\*
+
+ & Sensitivity & 65.22\% (44.89\%--81.19\%) \\*
+
+ & Specificity & \textbf{96.15\%} (81.11\%--99.32\%) \\*
+
+ & PPV & \textbf{93.75\%} (71.67\%--98.89\%) \\*
+
+ & NPV & 75.76\% (58.98\%--87.17\%) \\*
+
+ & F1 & 0.7692 (0.6061--0.9048) \\
+
+\addlinespace
+
+DSMIL-style & AUROC & 0.9197 (0.8378--0.9816) \\*
+
+ & AUPRC & 0.9260 (0.8579--0.9825) \\*
+
+ & Accuracy & 85.71\% (73.33\%--92.90\%) \\*
+
+ & Sensitivity & 78.26\% (58.10\%--90.34\%) \\*
+
+ & Specificity & \underline{92.31\%} (75.86\%--97.86\%) \\*
+
+ & PPV & \underline{90.00\%} (69.90\%--97.21\%) \\*
+
+ & NPV & 82.76\% (65.45\%--92.40\%) \\*
+
+ & F1 & 0.8372 (0.7027--0.9333) \\
+
+\addlinespace
+
+Distribution-ProtoMIL & AUROC & 0.9130 (0.8227--0.9783) \\*
+
+ & AUPRC & 0.9178 (0.8430--0.9789) \\*
+
+ & Accuracy & 79.59\% (66.36\%--88.52\%) \\*
+
+ & Sensitivity & \underline{91.30\%} (73.20\%--97.58\%) \\*
+
+ & Specificity & 69.23\% (50.01\%--83.50\%) \\*
+
+ & PPV & 72.41\% (54.28\%--85.30\%) \\*
+
+ & NPV & 90.00\% (69.90\%--97.21\%) \\*
+
+ & F1 & 0.8077 (0.7083--0.8980) \\
+
+\addlinespace
+
+CONCH v1.5 + TITAN & AUROC & 0.9013 (0.8026--0.9783) \\*
+
+ & AUPRC & 0.9203 (0.8459--0.9798) \\*
+
+ & Accuracy & 81.63\% (68.64\%--90.02\%) \\*
+
+ & Sensitivity & \underline{91.30\%} (73.20\%--97.58\%) \\*
+
+ & Specificity & 73.08\% (53.92\%--86.30\%) \\*
+
+ & PPV & 75.00\% (56.64\%--87.32\%) \\*
+
+ & NPV & 90.48\% (71.09\%--97.35\%) \\*
+
+ & F1 & 0.8235 (0.7308--0.9167) \\
+
+\addlinespace
+
+\end{longtable}
+\endgroup\normalsize
+
+\clearpage
+
+\begin{table}[H]\centering
+\caption{Separate ensemble operating point}\label{tab:S3}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.285714\dimexpr\textwidth-4\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.714286\dimexpr\textwidth-4\tabcolsep\relax}}
+\toprule
+\textbf{Metric} & \textbf{Estimate (95\% interval)} \\
+\midrule
+AUROC & 0.9649 (0.9097--1.0000) \\
+Accuracy & 93.88\% (83.48\%--97.90\%) \\
+Sensitivity & 91.30\% (73.20\%--97.58\%) \\
+Specificity & 96.15\% (81.11\%--99.32\%) \\
+F1 & 0.9333 (0.8511--1.0000) \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize Threshold = 0.70; TN/FP/FN/TP = 25/1/2/21. This is an archived selected operating point.
+\end{table}
+
+\begin{table}[H]\centering
+\caption{Paired internal model comparisons}\label{tab:S4}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.285714\dimexpr\textwidth-10\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.142857\dimexpr\textwidth-10\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.214286\dimexpr\textwidth-10\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.200000\dimexpr\textwidth-10\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.157143\dimexpr\textwidth-10\tabcolsep\relax}}
+\toprule
+\textbf{Comparison} & \textbf{AUROC difference} & \textbf{95\% interval} & \textbf{Discordant correct (Hybrid/other)} & \textbf{Exact McNemar P} \\
+\midrule
+Hybrid minus ABMIL & 0.0100 & -0.0184 to 0.0452 & 4/3 & 1.000 \\
+Hybrid minus Three-model ensemble & -0.0050 & -0.0284 to 0.0167 & 1/1 & 1.000 \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize Comparisons use the same 49 WSI and threshold 0.5. No multiplicity adjustment was applied. Intervals use 2,000 paired label-stratified bootstrap samples.
+\end{table}
+
+\begin{table}[H]\centering
+\caption{External selected subgroups}\label{tab:S5}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.187500\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.312500\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.078125\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.078125\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.156250\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.187500\dimexpr\textwidth-12\tabcolsep\relax}}
+\toprule
+\textbf{Source} & \textbf{Archived stain tag} & \textbf{Label} & \textbf{WSI} & \textbf{Correct at 0.5} & \textbf{Median score} \\
+\midrule
+MALT\_BJ & H\&E-like & 1 & 33 & 23 & 0.8768 \\
+MALT\_BJ & IHC / special stain & 1 & 111 & 111 & 0.8331 \\
+MALT\_HE & HE archive & 1 & 8 & 8 & 0.9670 \\
+SS\_BJ & SS (slide series) & 0 & 16 & 11 & 0.0543 \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize The initial archive and the selected analysis are separate tables. Filename-derived case counts are not substituted for verified clinical patient counts.
+\end{table}
+
+\clearpage
+
+\begin{table}[H]\centering
+\caption{Linked performance and interpretation outputs}\label{tab:S6}
+\small Individual-case rows are omitted from this public repository copy.
+\end{table}
+
+\begin{figure}[H]\centering
+\fbox{\begin{minipage}[c][35mm][c]{.88\textwidth}\centering
+\textbf{Omitted from this public repository copy}\\[6pt]
+This figure contains tissue images or individual-slide observations.\\
+The complete figure is retained in the local manuscript archive.
+\end{minipage}}
+\caption{\textbf{Internal diagnostic-group predictions and threshold behavior}. \textbf{a,} Individual Hybrid scores for the 23 MALT and 26 SS holdout slides. The dashed line marks 0.5. \textbf{b,} Sensitivity and specificity across thresholds for the same fixed predictions. Threshold variation does not represent an additional validation experiment.}\label{fig:S1}\end{figure}
+
+\clearpage
+\begin{table}[H]\centering
+\caption{Acquisition parameters recovered from archived WSI metadata}\label{tab:S7}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xrrr>{\raggedright\arraybackslash}p{.23\textwidth}@{}}
+\toprule
+Series & WSIs & Lens & MPP (x/y) & Recorded scanner \\
+\midrule
+Internal MALT/SS & 193 & $40\times$ & 0.225708 & Hamamatsu C9600-12 \\
+External MALT: source B & 144 & $40\times$ & 0.225708 & Hamamatsu C9600-12 \\
+External MALT: HE directory & 8 & $40\times$ & 0.225708 & Hamamatsu C9600-12 \\
+External SS & 16 & $40\times$ & 0.225708 & Hamamatsu C9600-12 \\
+\bottomrule
+\end{tabularx}
+\par\medskip\footnotesize MPP is in $\mu\mathrm{m}$ per level-0 pixel; the value is equal in both axes. TIFF headers recorded 44,305 pixels per centimetre. Internal files recorded NDP.scan 2.5.85 (133) or 3.3.0 (60); all 168 external files recorded 2.5.85. Coordinate attributes recorded target magnification $20\times$, patch size 512 pixels, level-0 footprint 1,024 pixels and zero overlap for all analyzed files. These metadata describe the archived images; clinical source and stain identities remain subject to provider confirmation.
+\end{table}
+
+\begin{table}[H]\centering
+\caption{Supporting data and implementation files accompanying the draft}\label{tab:S8}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{.21\textwidth}>{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{.25\textwidth}@{}}
+\toprule
+Material & Contents & Access status \\
+\midrule
+Source Data draft archive & Publication-coded archived predictions; new same-bag external comparisons, 20-bag sampling outputs and internal-variable diagnostics; all nine controlled training runs, selected epochs and per-slide predictions; provisional reader aggregates; ROI contour and Brier analyses; recovered acquisition metadata. & Accompanies the local author-review draft; public release pending. \\
+\addlinespace
+Source Code draft archive & Archived custom MIL sources and configurations; new fixed-checkpoint inference and controlled-training runners, prespecified protocols, sampling schedules, dependency/runtime records, metric scripts and publication figure generators. & Accompanies the draft; public repository and licensing pending. \\
+\addlinespace
+Technical provenance record & Source/configuration/checkpoint and feature-file hashes; archived checkout identity; exact sampled-row indices; current execution metadata distinguished from the unrecovered historical training environment; acquisition and ROI provenance. & Included in the manuscript source package. \\
+\addlinespace
+Raw WSIs and clinical linkage & Original images, patient/case linkage, clinical characteristics and reference-diagnosis records. & Access arrangements require confirmation by the data-providing institutions. \\
+\addlinespace
+Individual reader decisions & Per-slide diagnoses, original scores and protocol records. & Held by the hospital data provider; pending incorporation into this draft. \\
+\bottomrule
+\end{tabularx}
+\par\medskip\footnotesize Publication codes identify slides, not patients. The original-identifier mapping and blank clinical/reader confirmation forms are retained locally and excluded from the portable source package. No raw images or model weights are redistributed in these supporting archives.
+\end{table}
+
+\clearpage
+\begin{table}[H]\centering
+\caption{Input activation and gating in the configuration comparison}\label{tab:S9}
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xlllr@{}}
+\toprule
+Configuration & Active vectors & Statistics & Gate & AUROC \\
+\midrule
+Attention vector & A & Zeroed & Learned & 0.9281 \\
+Attention + distribution & A, M, S & Zeroed & Learned & 0.9264 \\
++ high-margin vector + statistics & A, M, S, P & All eight & Learned & \underline{0.9482} \\
+Full, equal gate & A, M, S, P, N & All eight & Equal & \textbf{0.9632} \\
+Full, learned gate & A, M, S, P, N & All eight & Learned & \underline{0.9482} \\
+\bottomrule
+\end{tabularx}
+\par\medskip\footnotesize Bold/underline denote the highest/second-highest displayed AUROC. A: attention; M: mean; S: standard deviation; P: high-margin vector; N: low-margin instance plus regional vector. Learned gates normalize over five positions, including masked vectors. All configurations retain the Hybrid fusion network. The transition to P also enables the eight statistics. These runs used batch size 16, up to 30 epochs and seed 42; training patch sampling was not fully seed-controlled. Each value is a single run, not a replicate mean. The principal Hybrid run used batch size eight.
+\end{table}
+
+\begin{figure}[H]\centering
+\fbox{\begin{minipage}[c][35mm][c]{.88\textwidth}\centering
+\textbf{Omitted from this public repository copy}\\[6pt]
+This figure contains tissue images or individual-slide observations.\\
+The complete figure is retained in the local manuscript archive.
+\end{minipage}}
+\caption{\textbf{Illustrative histological context}. \textbf{a,b,} Supplied MALT and SS photomicrographs, respectively, retained as separate background examples. Source tissue pixels and existing markings were preserved. These are not the model-selected cases in Figure 5. \missing{[MISSING P01: specimen linkage and original calibration; no new physical scale has been inferred.]}}\label{fig:S2}
+\end{figure}
+
+\clearpage
+\begin{figure}[H]\centering
+\includegraphics[width=\textwidth,height=.70\textheight,keepaspectratio]{figures/Supplementary_Figure_S3_historical_configurations.pdf}
+\caption{\textbf{Historical compound configurations and run records}. \textbf{a,} Input activation matrix and individual configuration AUROCs. Enabling the high-margin vector also enables eight statistics; low-margin and regional vectors remain combined. Learned gates normalize over five positions even when input vectors are masked. These runs used batch size 16 and up to 30 epochs; patch-sampling randomness was not fully seed-controlled. \textbf{b,} Individual runs with different partitions and training settings, retained as historical records rather than matched stability replicates. \textbf{c,} Pearson correlations of ensemble-member scores on the same 49 slides. Every AUROC point represents one run; no replicate error bars are implied. Source data: configuration\_activation\_matrix.csv, ablation\_metrics.csv, seed\_runs.csv and ensemble\_member\_correlations.csv.}\label{fig:S3}
+\end{figure}
+
+\input{sections/new_analyses_tables}
+
+\input{sections/controlled_training_table}
+
+% Controlled training results are synthesized in the main Results; S15/Fig. S4 retained.

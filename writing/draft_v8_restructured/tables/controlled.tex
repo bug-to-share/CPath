@@ -1,0 +1,13 @@
+\begin{table}[tbp]\centering
+\caption{Five-seed comparison of Hybrid and the internally selected candidate}\label{tab:controlled}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.19\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.23\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}}
+\toprule
+\textbf{Model} & \textbf{Validation AUROC} & \textbf{External AUROC} & \textbf{Ext. sens.} & \textbf{Ext. spec.} \\
+\midrule
+Hybrid & 0.9348 $\pm$ 0.0134 & 0.8056 $\pm$ 0.1299 & 49.21\% & 82.50\% \\
+Attention+L2 & 0.9341 $\pm$ 0.0084 & 0.8061 $\pm$ 0.0916 & 55.66\% & 81.25\% \\
+\bottomrule\end{tabular}
+
+\par\medskip\footnotesize AUROCs are means $\pm$ sample SD across seeds 17, 29, 43, 59 and 71; sensitivity and specificity are means of seed-specific rates at 0.5. These are not ensemble metrics. The same 49 validation and 168 external slides were reused. The three-seed selection was fixed before the additional seeds and new external inference.
+\end{table}

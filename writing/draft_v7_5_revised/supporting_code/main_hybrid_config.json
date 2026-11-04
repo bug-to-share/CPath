@@ -1,0 +1,13 @@
+{
+  "task": "malt_vs_non_malt",
+  "encoder": "uni_v2",
+  "aggregator": "hybrid_evidence_mil",
+  "seed": 42,
+  "test_size": 0.25,
+  "epochs": 30,
+  "lr": 5e-05,
+  "weight_decay": 0.0001,
+  "batch_size": 8,
+  "num_patches": 512,
+  "positive_label": "MALT"
+}

@@ -8,6 +8,7 @@ Research code and aggregate experimental summaries for weakly supervised whole-s
 - `scripts/evaluate_mil_ensembles.py`: probability-level ensemble analysis from local prediction files.
 - `results/`: aggregate metrics and figures only; no slide-level prediction rows or image data.
 - `docs/`: workflow, result interpretation, and reproducibility notes.
+- [`writing/`](writing/README.md): filtered public manuscript copies (v7.5/v8), aggregate figures, literature reviews and revision plans. See [export scope](writing/PUBLIC_EXPORT.md) for withheld material.
 
 No whole-slide images, tissue patches, embeddings, model checkpoints, patient-level manifests, or logs are distributed here. UNI2-h/CONCH weights and TRIDENT dependencies must be obtained and used under their own access and license terms.
 

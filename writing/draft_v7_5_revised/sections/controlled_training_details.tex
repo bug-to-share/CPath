@@ -1,0 +1,9 @@
+\clearpage
+\subsection*{Additional results: controlled training and historical configurations}
+
+The nine predefined training runs compared matched attention, full fixed scaling and full learned gating on the same split and evaluation bags (Supplementary Table S15 and Fig. S4). Internal AUROC means $\pm$ sample standard deviations across seeds 17, 29 and 43 were $0.9348\pm0.0044$, $0.9398\pm0.0153$ and $0.9353\pm0.0070$, respectively. The learned-gate-minus-matched-attention differences were $-0.0017$, 0.0000 and 0.0033. Learned gating exceeded fixed scaling in one of three internal runs. Parameter counts were 658,178, 1,190,403 and 1,521,672; the configurations were not matched for total capacity.
+
+External AUROC means $\pm$ sample standard deviations were $0.7270\pm0.1035$ for matched attention, $0.7445\pm0.1254$ for fixed scaling and $0.7633\pm0.1581$ for learned gating. The learned-gate external range was 0.6238--0.9350, compared with its internal range of 0.9298--0.9431. Its external differences from matched attention were $-0.0859$, 0.1850 and 0.0099 across the same three seeds. Thus, the observed external advantage changed direction across runs, and the narrow internal AUROC range coexisted with wider external variation. All seed-specific results, selected epochs and fixed-threshold rates are retained; no run replaced the historical primary checkpoint.
+
+Historical compound configurations remain in Supplementary Table S9 and Fig. S3. Full equal-gate and learned-gate runs had AUROCs of 0.9632 and 0.9482, respectively, but their training patch randomness was not fully controlled. Earlier seed runs also differed in partition and epoch budget. Those archived comparisons describe their respective configurations and are separate from the new fixed-split training comparison.
+

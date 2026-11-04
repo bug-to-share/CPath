@@ -1,0 +1,22 @@
+{\small\begin{longtable}{>{\raggedright\arraybackslash}p{0.44\textwidth}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}>{\raggedright\arraybackslash}p{0.12\textwidth}}
+\caption{Historical complete-implementation comparison on 49 validation slides}\\
+\toprule
+\textbf{Implementation} & \textbf{AUROC} & \textbf{AP} & \textbf{Sens. (\%)} & \textbf{Spec. (\%)} \\
+\midrule\endfirsthead
+\toprule
+\textbf{Implementation} & \textbf{AUROC} & \textbf{AP} & \textbf{Sens. (\%)} & \textbf{Spec. (\%)} \\
+\midrule\endhead
+Three-model ensemble & 0.9649 & 0.9576 & 91.30 & 84.62 \\
+Hybrid & 0.9599 & 0.9514 & 95.65 & 80.77 \\
+ABMIL & 0.9498 & 0.9396 & 82.61 & 88.46 \\
+Local two-tier attention & 0.9398 & 0.9416 & 86.96 & 88.46 \\
+Local attention pooling (CLAM-style) & 0.9365 & 0.9422 & 91.30 & 84.62 \\
+Local grouped-region transformer & 0.9281 & 0.8400 & 95.65 & 84.62 \\
+Local prototype pooling & 0.9264 & 0.9306 & 86.96 & 84.62 \\
+Mean pooling & 0.9247 & 0.9332 & 78.26 & 92.31 \\
+Local transformer pooling & 0.9231 & 0.9180 & 65.22 & 96.15 \\
+Local dual-stream pooling & 0.9197 & 0.9260 & 78.26 & 92.31 \\
+Distribution--prototype pooling & 0.9130 & 0.9178 & 91.30 & 69.23 \\
+CONCH v1.5 + TITAN & 0.9013 & 0.9203 & 91.30 & 73.08 \\
+\bottomrule\end{longtable}}
+{\footnotesize Threshold 0.5. This table retains all historical models, not a ranking of official full-method reproductions. TITAN uses a different encoder and instance budget. Code-ID mappings and original metrics are in Source Data. The ensemble combines Hybrid, local CLAM-style pooling and the grouped-region transformer.}

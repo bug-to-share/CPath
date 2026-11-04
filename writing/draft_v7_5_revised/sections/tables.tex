@@ -1,0 +1,101 @@
+% Canonical float definitions; invoked beside their Results paragraphs.
+\newcommand{\MainTableOne}{%
+\begin{table}[!htb]\centering
+\caption{WSI cohort composition}\label{tab:1}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.294118\dimexpr\textwidth-8\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.352941\dimexpr\textwidth-8\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.088235\dimexpr\textwidth-8\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.264706\dimexpr\textwidth-8\tabcolsep\relax}}
+\toprule
+\textbf{Analysis set} & \textbf{Diagnostic/source group} & \textbf{WSIs} & \textbf{Verified patients} \\
+\midrule
+Internal training & MALT & 67 & \missing{[MISSING C02]} \\
+Internal training & SS & 77 & \missing{[MISSING C02]} \\
+Internal validation & MALT & 23 & \missing{[MISSING C02]} \\
+Internal validation & SS & 26 & \missing{[MISSING C02]} \\
+External selected & MALT: source B & 144 & \missing{[MISSING C02]} \\
+External selected & MALT: HE directory & 8 & \missing{[MISSING C02]} \\
+External selected & SS & 16 & \missing{[MISSING C02]} \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize Both internal and external analyses compare MALT lymphoma with SS. \missing{[MISSING C02: add age, sex, clinical features, collection dates and verified patient counts. Hospital-held records; pending incorporation.]}
+\end{table}
+}
+
+\newcommand{\MainTableTwo}{%
+\begin{table}[!htb]\centering
+\caption{Internal validation estimates; threshold metrics at 0.5}\label{tab:2}
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}Xrrrrrr@{}}
+\toprule
+\textbf{Model} & \textbf{AUROC} & \textbf{AUPRC} & \textbf{Accuracy} & \textbf{Sensitivity} & \textbf{Specificity} & \textbf{F1} \\
+\midrule
+Three-model ensemble & \textbf{0.9649} & \textbf{0.9576} & \underline{87.76\%} & \underline{91.30\%} & 84.62\% & 0.8750 \\
+Hybrid-Evidence MIL & \underline{0.9599} & \underline{0.9514} & \underline{87.76\%} & \textbf{95.65\%} & 80.77\% & \underline{0.8800} \\
+ABMIL & 0.9498 & 0.9396 & 85.71\% & 82.61\% & 88.46\% & 0.8444 \\
+DTFD-style & 0.9398 & 0.9416 & \underline{87.76\%} & 86.96\% & 88.46\% & 0.8696 \\
+CLAM-SB-style & 0.9365 & 0.9422 & \underline{87.76\%} & \underline{91.30\%} & 84.62\% & 0.8750 \\
+RRTMIL-style & 0.9281 & 0.8400 & \textbf{89.80\%} & \textbf{95.65\%} & 84.62\% & \textbf{0.8980} \\
+ProtoMIL-style & 0.9264 & 0.9306 & 85.71\% & 86.96\% & 84.62\% & 0.8511 \\
+Mean pooling & 0.9247 & 0.9332 & 85.71\% & 78.26\% & \underline{92.31\%} & 0.8372 \\
+TransMIL-style & 0.9231 & 0.9180 & 81.63\% & 65.22\% & \textbf{96.15\%} & 0.7692 \\
+DSMIL-style & 0.9197 & 0.9260 & 85.71\% & 78.26\% & \underline{92.31\%} & 0.8372 \\
+Distribution-ProtoMIL & 0.9130 & 0.9178 & 79.59\% & \underline{91.30\%} & 69.23\% & 0.8077 \\
+CONCH v1.5 + TITAN & 0.9013 & 0.9203 & 81.63\% & \underline{91.30\%} & 73.08\% & 0.8235 \\
+\bottomrule
+\end{tabularx}
+
+\par\medskip\footnotesize Bold and underlined values indicate the best and second-best distinct values in each metric column; ties share the same mark. Rankings are descriptive and do not imply statistical significance. n = 49 WSIs (23 MALT and 26 SS). Threshold-dependent metrics use 0.5. The same 49 slides selected checkpoints; these are development estimates. AUROC and AUPRC summarize the scores across thresholds. All models except CONCH v1.5 + TITAN use UNI2-h features. Slide-encoder dimensions, classifier inputs and optimization budgets differ; these are complete-implementation comparisons rather than isolated pooling substitutions. Interval estimates and predictive values appear in Supplementary Table S2. The ensemble at 0.70 is a separate archived operating point, not an additional model.
+\end{table}
+}
+
+\newcommand{\MainTableThree}{%
+\begin{table}[!htb]\centering
+\caption{Internal and external Hybrid estimates with 95\% intervals}\label{tab:3}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.306122\dimexpr\textwidth-6\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.204082\dimexpr\textwidth-6\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.489796\dimexpr\textwidth-6\tabcolsep\relax}}
+\toprule
+\textbf{Cohort} & \textbf{Metric} & \textbf{Estimate (95\% interval)} \\
+\midrule
+Internal Hybrid & AUROC & 0.9599 (0.9046--0.9967) \\
+Internal Hybrid & AUPRC & 0.9514 (0.8864--0.9965) \\
+Internal Hybrid & Accuracy & 87.76\% (75.76\%--94.27\%) \\
+Internal Hybrid & Sensitivity & 95.65\% (79.01\%--99.23\%) \\
+Internal Hybrid & Specificity & 80.77\% (62.12\%--91.49\%) \\
+Internal Hybrid & PPV & 81.48\% (63.30\%--91.82\%) \\
+Internal Hybrid & NPV & 95.45\% (78.20\%--99.19\%) \\
+Internal Hybrid & F1 & 0.8800 (0.7925--0.9583) \\
+External Hybrid & AUROC & 0.8721 (0.7364--0.9758) \\
+External Hybrid & AUPRC & 0.9733 (0.9365--0.9971) \\
+External Hybrid & Accuracy & 91.07\% (85.79\%--94.51\%) \\
+External Hybrid & Sensitivity & 93.42\% (88.31\%--96.39\%) \\
+External Hybrid & Specificity & 68.75\% (44.40\%--85.84\%) \\
+External Hybrid & PPV & 96.60\% (92.29\%--98.54\%) \\
+External Hybrid & NPV & 52.38\% (32.37\%--71.66\%) \\
+External Hybrid & F1 & 0.9498 (0.9257--0.9732) \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize AUROC, average precision and F1 intervals use 2,000 label-stratified WSI bootstrap samples. Proportion intervals use Wilson intervals. Threshold-dependent metrics use 0.5. Internal slides also selected checkpoints; fixed-score intervals omit model-selection uncertainty and unverified patient clustering.
+\end{table}
+}
+
+\newcommand{\MainTableFour}{%
+\begin{table}[!htb]\centering
+\caption{Draft reader comparison with evidence status}\label{tab:4}
+\small
+\begin{tabular}{>{\raggedright\arraybackslash}p{0.222222\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.283951\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.123457\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.123457\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.123457\dimexpr\textwidth-12\tabcolsep\relax}>{\raggedright\arraybackslash}p{0.123457\dimexpr\textwidth-12\tabcolsep\relax}}
+\toprule
+\textbf{Reader/model} & \textbf{Evidence status} & \textbf{Threshold} & \textbf{Accuracy} & \textbf{Sensitivity} & \textbf{Specificity} \\
+\midrule
+Reader 1 & Provisional aggregate & Not applicable & 77.55\% & 73.91\% & \underline{80.77\%} \\
+Reader 2 & Provisional aggregate & Not applicable & \underline{83.67\%} & 82.61\% & \textbf{84.62\%} \\
+Hybrid & Model predictions & 0.5 & \textbf{87.76\%} & \textbf{95.65\%} & \underline{80.77\%} \\
+Three-model ensemble & Model predictions & 0.5 & \textbf{87.76\%} & \underline{91.30\%} & \textbf{84.62\%} \\
+\bottomrule
+\end{tabular}
+
+\par\medskip\footnotesize \missing{[MISSING R01/R02: verify reader aggregates using individual records and complete paired comparisons.]} Bold/underline mark the highest/second-highest displayed value in each performance column, with ties marked equally. Reader rankings are provisional descriptive comparisons. Both model rows use threshold 0.5. The ensemble operating point at 0.70 appears separately in Figure~\ref{fig:4}b and Supplementary Table S3. The internal model estimates reuse slides involved in checkpoint selection. These results do not establish reader superiority or AI-assisted improvement.
+\end{table}
+}
+

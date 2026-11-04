@@ -1,0 +1,16 @@
+\title{Foundation-model-based whole-slide classification of salivary gland MALT lymphoma and Sjögren's syndrome}
+\author{\pending{A01: authors and affiliations}}
+\date{}
+\maketitle
+\textbf{Correspondence:} \pending{A02: name and contact details}
+
+\begin{abstract}
+\textbf{Background:} The histological distinction between salivary gland mucosa-associated lymphoid tissue (MALT) lymphoma and Sjögren's syndrome (SS) motivates disease-specific evaluation of computational pathology. We examined whether frozen foundation-model features support whole-slide classification and how model choice and sampling affect performance.
+
+\textbf{Methods:} The internal dataset contained 193 slides, divided into 144 training and 49 validation slides used for checkpoint selection. Historical external evaluation included 168 slides (152 MALT, 16 SS) with incompletely confirmed stain categories. We evaluated a retained Hybrid-Evidence multiple-instance learning model, simpler baselines, controlled training across seeds and repeated patch sampling.
+
+\textbf{Results:} The retained model achieved validation AUROC 0.9599 (95\% CI, 0.9046--0.9967) and external AUROC 0.8721 (0.7364--0.9758). External sensitivity was 93.42\%, specificity 68.75\% and negative predictive value 52.38\% at threshold 0.5. Paired AUROC differences from ABMIL included zero. Controlled five-seed external means were 0.8056 for Hybrid and 0.8061 for internally selected Attention+L2, which used 56.75\% fewer parameters. Linear controls achieved external AUROCs of 0.8335--0.8462 on common reference inputs. With the retained checkpoint, 18/168 external slides crossed the decision threshold across 20 patch samples.
+
+\textbf{Conclusions:} Frozen pathology features contained discriminatory information for the evaluated MALT/SS categories, but controlled comparisons did not establish an advantage for the more complex aggregator. Clinical interpretation requires a defined material spectrum and operating point, completed patient-level documentation and independent evaluation.
+\end{abstract}
+\textbf{Keywords:} MALT lymphoma; Sjögren's syndrome; salivary gland; computational pathology; multiple-instance learning

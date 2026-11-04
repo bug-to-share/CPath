@@ -1,0 +1,44 @@
+{\small\begin{longtable}{>{\raggedright\arraybackslash}p{0.31\textwidth}>{\raggedright\arraybackslash}p{0.06\textwidth}>{\raggedright\arraybackslash}p{0.07\textwidth}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}}
+\caption{All 34 neural training runs: selected checkpoint results}\\
+\toprule
+\textbf{Configuration} & \textbf{Seed} & \textbf{Epoch} & \textbf{Val. AUC} & \textbf{Ext. AUC} & \textbf{Ext. sens.} & \textbf{Ext. spec.} \\
+\midrule\endfirsthead
+\toprule
+\textbf{Configuration} & \textbf{Seed} & \textbf{Epoch} & \textbf{Val. AUC} & \textbf{Ext. AUC} & \textbf{Ext. sens.} & \textbf{Ext. spec.} \\
+\midrule\endhead
+Hybrid control & 17 & 29 & 0.9298 & 0.7311 & 60.53 & 68.75 \\
+Matched attention & 17 & 13 & 0.9314 & 0.8170 & 80.26 & 62.50 \\
+Hybrid + L2 & 17 & 26 & 0.9264 & 0.6571 & 74.34 & 56.25 \\
+Attention + L2 & 17 & 19 & 0.9314 & 0.8976 & 73.03 & 93.75 \\
+Attention masking & 17 & 13 & 0.9314 & 0.8100 & 75.00 & 62.50 \\
+Original-space attention & 17 & 30 & 0.8980 & 0.5391 & 52.63 & 50.00 \\
+Feature-subspace attention & 17 & 29 & 0.8562 & 0.7788 & 50.00 & 75.00 \\
+Subspace, batch32/lr3e-4 & 17 & 28 & 0.8813 & 0.7722 & 54.61 & 75.00 \\
+Hybrid, two bags & 17 & 8 & 0.9114 & 0.6525 & 62.50 & 56.25 \\
+Hybrid, two bags + KL & 17 & 8 & 0.9114 & 0.6727 & 59.21 & 56.25 \\
+Hybrid control & 29 & 20 & 0.9331 & 0.9350 & 59.21 & 93.75 \\
+Matched attention & 29 & 18 & 0.9331 & 0.7500 & 61.18 & 62.50 \\
+Hybrid + L2 & 29 & 18 & 0.9247 & 0.9412 & 65.79 & 93.75 \\
+Attention + L2 & 29 & 18 & 0.9348 & 0.7352 & 60.53 & 62.50 \\
+Attention masking & 29 & 18 & 0.9298 & 0.7669 & 51.97 & 68.75 \\
+Original-space attention & 29 & 26 & 0.9532 & 0.4441 & 28.95 & 50.00 \\
+Feature-subspace attention & 29 & 11 & 0.8896 & 0.7307 & 78.95 & 50.00 \\
+Subspace, batch32/lr3e-4 & 29 & 4 & 0.8846 & 0.7196 & 78.95 & 37.50 \\
+Hybrid, two bags & 29 & 15 & 0.9298 & 0.9219 & 83.55 & 87.50 \\
+Hybrid, two bags + KL & 29 & 10 & 0.9314 & 0.9215 & 71.71 & 93.75 \\
+Hybrid control & 43 & 29 & 0.9431 & 0.6238 & 17.76 & 68.75 \\
+Matched attention & 43 & 12 & 0.9398 & 0.6139 & 34.87 & 56.25 \\
+Hybrid + L2 & 43 & 26 & 0.9498 & 0.5514 & 22.37 & 56.25 \\
+Attention + L2 & 43 & 21 & 0.9431 & 0.6850 & 45.39 & 62.50 \\
+Attention masking & 43 & 22 & 0.9431 & 0.6299 & 61.18 & 56.25 \\
+Original-space attention & 43 & 2 & 0.8612 & 0.8322 & 95.39 & 43.75 \\
+Feature-subspace attention & 43 & 7 & 0.8645 & 0.8532 & 88.16 & 56.25 \\
+Subspace, batch32/lr3e-4 & 43 & 30 & 0.8712 & 0.8203 & 63.82 & 68.75 \\
+Hybrid, two bags & 43 & 12 & 0.9599 & 0.4914 & 21.71 & 50.00 \\
+Hybrid, two bags + KL & 43 & 28 & 0.9582 & 0.5979 & 20.39 & 68.75 \\
+Hybrid control & 59 & 20 & 0.9515 & 0.8236 & 44.08 & 87.50 \\
+Attention + L2 & 59 & 22 & 0.9214 & 0.8409 & 48.68 & 93.75 \\
+Hybrid control & 71 & 27 & 0.9164 & 0.9145 & 64.47 & 93.75 \\
+Attention + L2 & 71 & 24 & 0.9398 & 0.8717 & 50.66 & 93.75 \\
+\bottomrule\end{longtable}}
+{\footnotesize Sensitivities and specificities are percentages at threshold 0.5. Every planned run is retained. Full epoch histories and checkpoints remain in the experiment archive.}

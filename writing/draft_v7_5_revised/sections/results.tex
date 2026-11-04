@@ -1,0 +1,64 @@
+\section{Results}
+\subsection{Study material and validation design}
+
+The internal cohort comprised 193 whole-slide images (WSIs): 90 MALT and 103 SS. A label-stratified slide-level split assigned 144 WSIs to training (67 MALT, 77 SS) and 49 to internal validation (23 MALT, 26 SS; Table~\ref{tab:1}). The 49 validation slides were evaluated during training to select the checkpoint and were also used for the reported internal estimates. These estimates therefore describe model development, rather than performance on an independent internal test set. \missing{[MISSING C02: hospital-held patient linkage, patient counts, dates and clinical characteristics; patient-level separation remains unverified.]}
+
+\MainTableOne
+
+The external archive contained 227 slides; 223 produced predictions and 168 entered the final author-reviewed analysis (152 MALT, 16 SS). Among the 152 MALT slides, 33 had H\&E-like archive tags, 111 had IHC/special-stain tags and eight came from a separate HE directory. Stains in the 16 SS slides were not confirmed in the available metadata. These groups describe archive provenance, not verified stain-specific cohorts. \missing{[MISSING C03/C04: hospital-confirmed stain/specimen metadata and finalized eligibility and review criteria.]}
+
+Hybrid-Evidence MIL combined five summaries of 512 sampled UNI2-h patch embeddings with eight latent similarity/margin statistics (Fig.~\ref{fig:1}). The primary checkpoint was selected by the highest internal validation AUROC and used unchanged for external evaluation.
+
+\MainFigureOne
+
+\subsection{Discrimination on the internal validation set}
+
+Hybrid achieved an area under the receiver operating characteristic curve (AUROC) of 0.9599 (95\% CI 0.9046--0.9967) and average precision (AUPRC) of 0.9514 (Fig.~\ref{fig:2}; Table~\ref{tab:2}). At threshold 0.5, it correctly classified 22/23 MALT and 21/26 SS slides, giving sensitivity 95.65\%, specificity 80.77\% and accuracy 87.76\%. The intervals condition on the saved predictions and do not correct for checkpoint selection on these slides.
+
+\MainFigureTwo
+\MainTableTwo
+
+ABMIL achieved AUROC 0.9498, compared with 0.9247 for neural mean pooling. The paired Hybrid-minus-ABMIL AUROC difference was 0.0100 (95\% CI $-0.0184$ to 0.0452; Supplementary Table S4). Hybrid alone correctly classified four discordant slides and ABMIL alone correctly classified three (exact McNemar $P=1.000$). Other UNI2-h configurations achieved AUROCs of 0.9130--0.9398. Their dimensions, classifier heads and optimization settings differed, so these are comparisons of complete local implementations (Supplementary Tables S1 and S14). CONCH v1.5 with TITAN achieved AUROC 0.9013 with a different encoder and patch budget.
+
+The equal-weight Hybrid/CLAM-SB-style/RRTMIL-style score ensemble achieved AUROC 0.9649 and AUPRC 0.9576; its paired AUROC difference from Hybrid included zero. At threshold 0.5, accuracy remained 87.76\%: the ensemble corrected one SS error but introduced one MALT error, with five errors shared. The retrospectively selected threshold of 0.70 gave accuracy 93.88\%, sensitivity 91.30\% and specificity 96.15\% (Supplementary Table S3). Ensemble and threshold comparisons used the same internal validation material and are exploratory.
+
+
+\subsection{External discrimination and material composition}
+
+External Hybrid AUROC was 0.8721 (95\% CI 0.7364--0.9758) and AUPRC was 0.9733 (Fig.~\ref{fig:3}; Table~\ref{tab:3}). At threshold 0.5, 142/152 MALT and 11/16 SS slides were correctly classified. Sensitivity was 93.42\%, specificity 68.75\% (95\% CI 44.40\%--85.84\%) and balanced accuracy 81.09\%. Accuracy was 91.07\%, compared with 90.48\% for a constant MALT prediction at the observed class prevalence. Ten of the 21 negative predictions were MALT, giving a negative predictive value of 52.38\% (95\% CI 32.37\%--71.66\%).
+
+\MainFigureThree
+\MainTableThree
+
+The archive-tag groups differed in their MALT detection counts: 23/33 H\&E-like slides, 111/111 IHC/special-stain-tagged slides and 8/8 HE-directory slides were positive. All ten MALT false negatives occurred in the H\&E-like group. A post hoc sensitivity analysis excluding the 111 IHC/special-stain-tagged slides retained 57 WSIs (41 MALT, 16 SS). AUROC was 0.8689, but sensitivity was 75.61\% and balanced accuracy 72.18\%; specificity remained 68.75\% (Supplementary Table S18). This calculation shows that the high overall sensitivity depended on the evaluated material composition. It does not isolate a stain effect or establish H\&E-only validation, because stain identities and the retained SS material remain unverified.
+
+On identical external reference bags, the historical ABMIL, CLAM-SB-style and RRTMIL-style checkpoints achieved AUROCs of 0.7903, 0.6591 and 0.7743, respectively (Supplementary Table S11). Paired Hybrid-minus-comparator differences were 0.0818 (95\% CI $-0.0136$ to 0.2011), 0.2130 (0.0843--0.3528) and 0.0979 (0.0415--0.1649). These comparisons concern retained complete implementations; the historical three-model ensemble was not evaluated externally.
+
+Hybrid Brier scores were 0.0895 internally and 0.0919 externally (Supplementary Table S13). For context, the external-prevalence constant had squared error 0.0862 and the training-prevalence constant had squared error 0.2793 (Supplementary Table S18). The former uses evaluation labels and is only a descriptive reference. Neither the Brier score nor the high external AUPRC establishes calibration or clinical probability accuracy.
+
+
+\subsection{Additional model comparisons}
+
+Train-only logistic regression on mean UNI2-h features achieved internal/external AUROCs of 0.9314/0.8335; averaging normalized patch features gave 0.9247/0.8462. Their external sensitivities were 45.39\% and 46.05\%, respectively, at specificity 93.75\% for both (Supplementary Table S17). These controls retained discrimination with a different threshold tradeoff. Additional configuration comparisons and complete development results are reported in Supplementary Tables S9 and S15--S19 and Supplementary Results. They did not establish an advantage attributable to the learned gate.
+
+\subsection{Provisional reader observations}
+
+Aggregate records for two pathologists on the 49 internal slides gave accuracies of 77.55\% and 83.67\% (Fig.~\ref{fig:4}; Table~\ref{tab:4}). Reader 1 had 17 true positives, six false negatives, 21 true negatives and five false positives; Reader 2 had 19, four, 22 and four, respectively. These counts remain provisional pending reconciliation with individual decisions and the review protocol. \missing{[MISSING R01/R02: hospital-held reader records, experience and review conditions; paired analyses pending.]}
+
+The model estimates used a validation set that had participated in model selection. Together with the missing paired reader records, this precludes a reader-superiority claim from the displayed comparison. No AI-assisted reading benefit was measured by these aggregate counts.
+
+\MainTableFour
+\MainFigureFour
+
+\subsection{Inspectable regions and input-sampling variability}
+
+Figure~\ref{fig:5} shows correct and incorrect classifications with their original model-selected windows. Main-evaluation and interpretation runs sampled different bags; both scores are linked in Supplementary Table S6. None of the 12 displayed interpretation cases changed class at threshold 0.5, although the largest score difference was 0.3252. All eight displayed thumbnails matched their original image windows. Automated segmentation-contour coverage was 100\% for seven windows and 48.11\% for the low-margin window in Case 10 (Supplementary Table S12); this geometric measure is not verified tissue content.
+
+The overlays depict latent prototype margins normalized separately by slide. The mean-feature branch had the largest gate coefficient on all 217 reference bags. Neither the latent banks nor gate coefficients establish disease-specific morphology or causal feature importance. The representative photomicrographs in Supplementary Fig. S2 provide pathological context, rather than annotations of these selected regions. \missing{[MISSING P01/P03: specimen linkage and calibration of illustrative photomicrographs, and pathological assessment of model-selected regions.]}
+
+\MainFigureFive
+
+Across 20 additional bags per slide with the historical checkpoint fixed, median score standard deviations were 0.0120 internally and 0.0150 externally; maxima were 0.1297 and 0.1241 (Fig.~\ref{fig:6}; Supplementary Table S10). Seven of 49 internal slides and 18 of 168 external slides received both threshold classifications across draws. Complete-cohort AUROC ranged from 0.9498 to 0.9682 internally and from 0.8549 to 0.8943 externally. These are technical sampling ranges. Averaging 20 scores per slide gave AUROCs of 0.9632 and 0.8775; externally, it traded one fewer false positive for one additional false negative. The original single-bag predictions remain the primary results.
+
+\MainFigureSix
+\FloatBarrier

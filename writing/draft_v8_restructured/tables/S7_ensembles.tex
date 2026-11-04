@@ -1,0 +1,22 @@
+{\small\begin{longtable}{>{\raggedright\arraybackslash}p{0.2\textwidth}>{\raggedright\arraybackslash}p{0.24\textwidth}>{\raggedright\arraybackslash}p{0.13\textwidth}>{\raggedright\arraybackslash}p{0.1\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}>{\raggedright\arraybackslash}p{0.11\textwidth}}
+\caption{Probability ensembles of the complete seed sets}\\
+\toprule
+\textbf{Model} & \textbf{Averaging} & \textbf{Cohort} & \textbf{AUROC} & \textbf{Sens. (\%)} & \textbf{Spec. (\%)} \\
+\midrule\endfirsthead
+\toprule
+\textbf{Model} & \textbf{Averaging} & \textbf{Cohort} & \textbf{AUROC} & \textbf{Sens. (\%)} & \textbf{Spec. (\%)} \\
+\midrule\endhead
+Attention + L2 & 3 seeds; ref. bag & external & 0.7817 & 55.26 & 68.75 \\
+Attention + L2 & 3 seeds; ref. bag & internal & 0.9431 & 82.61 & 88.46 \\
+Hybrid control & 3 seeds; ref. bag & external & 0.7730 & 40.13 & 81.25 \\
+Hybrid control & 3 seeds; ref. bag & internal & 0.9482 & 91.30 & 88.46 \\
+Attention + L2 & 5 seeds; ref. bag & external & 0.8199 & 53.29 & 81.25 \\
+Attention + L2 & 5 seeds; ref. bag & internal & 0.9365 & 82.61 & 92.31 \\
+Hybrid control & 5 seeds; ref. bag & external & 0.8470 & 47.37 & 93.75 \\
+Hybrid control & 5 seeds; ref. bag & internal & 0.9515 & 91.30 & 92.31 \\
+Attention + L2 & 5 seeds; 5 bags & external & 0.8314 & 53.95 & 87.50 \\
+Attention + L2 & 5 seeds; 5 bags & internal & 0.9381 & 91.30 & 88.46 \\
+Hybrid control & 5 seeds; 5 bags & external & 0.8479 & 48.03 & 93.75 \\
+Hybrid control & 5 seeds; 5 bags & internal & 0.9548 & 91.30 & 92.31 \\
+\bottomrule\end{longtable}}
+{\footnotesize Reference bags and the five newly sampled bags are separate inputs. Each displayed metric is calculated after probability averaging; it is not an average of AUROCs.}

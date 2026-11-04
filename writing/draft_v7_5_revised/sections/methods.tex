@@ -1,0 +1,48 @@
+\section{Methods}
+\subsection{Study design, reference categories and ethics}
+
+This retrospective study used WSI-level diagnostic labels, with MALT positive and SS negative. Source records identified Peking University School and Hospital of Stomatology as the internal source and Peking University Third Hospital as an external source. \missing{[AUTHOR CHECK C05: confirm the provenance of the separate HE-directory material.]} Hospital-held records are needed to characterize the actual diagnostic spectrum, SS histories, reference-standard procedures, reviewers and ancillary tests. The relevant lymphoma and SS classification frameworks provide context but are not substituted for the procedures actually used \citep{ref3,ref4,ref17}. \missing{[MISSING C02/C06: patient linkage, dates, clinical characteristics and reference-standard details.]}
+
+The Biomedical Ethics Committee of Peking University School and Hospital of Stomatology approved the protocol (PKUSSIRB-2025110092; review on 24 April 2025, signature on 27 May 2025). \missing{[AUTHOR CHECK A03: insert consent or waiver and external-material/continuing-review provisions from the hospital records.]} Reporting was organized around STARD-AI \citep{ref20}.
+
+\subsection{Cohorts and development partitions}
+
+Slide identifiers were generated from file stems. Identifiers occurring in both diagnostic classes were removed; repeated same-label identifiers were deduplicated. Slides without the required precomputed features were excluded from the corresponding analysis. The main UNI2-h dataset contained 193 WSIs. A label-stratified split with holdout fraction 0.25 produced 144 training and 49 validation slides. The split code did not group slides by patient; patient-level separation cannot be verified without linkage records.
+
+For the external material, original archive membership (227 slides), prediction success (223) and final author-reviewed inclusion (168) were recorded separately. \missing{[MISSING C04: finalized eligibility, exclusion and manual-review criteria.]} Source-B MALT tags used filename keywords for H\&E-like material and assigned remaining slides to IHC/special stain; the separate HE directory and SS series retained their source descriptors. \missing{[MISSING C03: pathology-confirmed stains and specimen metadata.]} No archive descriptor was treated as a verified stain identity.
+
+\subsection{Image processing and frozen representations}
+
+TRIDENT preprocessing used GrandQC tissue segmentation \citep{ref12}. All 361 analyzed WSI headers recorded a Hamamatsu C9600-12 scanner, $40\times$ source magnification and approximately $0.225708\,\mu\mathrm{m}$ per level-0 pixel. Non-overlapping $512\times512$ patches at target $20\times$ corresponded to $1{,}024\times1{,}024$ level-0 windows. UNI2-h produced 1,536-dimensional features stored with patch coordinates; the image encoder remained frozen during downstream training \citep{ref8,ref29}. Its recorded image transform resized and centre-cropped to $224\times224$ pixels. Detailed encoder settings and recovered acquisition metadata appear in Supplementary Methods and Table S7. \missing{[MISSING M01: exact downloaded UNI2-h revision and weight checksum.]}
+
+Each neural input bag contained 512 feature rows, sampled without replacement when possible and with replacement otherwise. Training bags varied across loading events; evaluation used recorded deterministic sampling conventions. CONCH v1.5 with TITAN used 768-dimensional features and 1,024 patches, and was treated as a separate encoder/aggregation comparison \citep{ref13}.
+
+\subsection{Hybrid model and historical comparisons}
+
+Hybrid projected patch features from 1,536 to 256 dimensions with layer normalization, GELU and dropout 0.3. Five vectors summarized gated attention, the feature mean, sample standard deviation, high-margin instances, and the sum of low-margin instances and pooled coordinate groups. Two banks of eight learnable prototypes defined relative cosine-similarity margins; the 32 highest- and lowest-margin instances formed their corresponding summaries. Six continuous similarity/margin statistics and two indicator proportions provided eight additional scalar inputs. Sixteen coordinate-ordered groups were pooled without explicit intergroup distances or adjacency.
+
+A learned five-output gate scaled the vectors before concatenation. The eight statistics entered the fusion network through an unweighted path, followed by a classifier and sigmoid score. Prototype banks were latent parameters without regional diagnostic labels. Gate coefficients represented feature scaling, not causal attribution. Full equations and dimensions are given in Supplementary Methods.
+
+The historical Hybrid used AdamW, learning rate $5\times10^{-5}$, weight decay $10^{-4}$, batch size eight and 30 epochs. Weighted binary cross-entropy used positive-class weight $77/67$. The highest internal validation AUROC selected epoch 15. Thus, the validation set was repeatedly inspected during training and subsequently used to report discrimination.
+
+Historical comparators included neural mean pooling, ABMIL and local CLAM-SB-, DSMIL-, DTFD-, TransMIL-, RRTMIL- and prototype-based implementations \citep{ref5,ref7,ref14,ref15,ref16,ref28}. The ``-style'' designation identifies compact local variants, not complete official reproductions; CLAM-SB-style omitted instance clustering, and the local RRTMIL-style implementation does not reproduce the full feature re-embedding method. Dimensions and training budgets differed (Supplementary Tables S1 and S14). The exploratory ensemble averaged the three scores from Hybrid, CLAM-SB-style and RRTMIL-style. Its threshold of 0.70 was selected retrospectively on the internal validation material; 0.5 is the common display threshold.
+
+\subsection{Additional model comparisons}
+
+Supplementary configuration analyses examined feature normalization, attention masking, direct/subspace attention and two-bag training under a recorded development protocol. Checkpoints and candidate selection used internal validation AUROC; the complete training settings, selection records and outcomes are provided in Supplementary Methods and Tables S15--S19. These analyses reused the existing cohorts.
+
+Two simple controls fitted train-only standardization and L2-regularized logistic regression to all-feature slide means, with or without per-patch L2 normalization. They used $C=1$, balanced class weights and no hyperparameter search. Reference-bag inference and full-feature means were evaluated separately. These controls are distinct from the historical neural mean-pooling model.
+
+\subsection{Secondary analyses, readers and regional displays}
+
+Historical external comparator evaluation used identical reconstructed reference bags for four frozen checkpoints. Twenty additional bags per slide quantified the historical Hybrid checkpoint's sampling variation; a threshold-crossing slide had predictions on both sides of 0.5. Draw-level AUROCs and score averages were descriptive technical analyses. The archive-tag sensitivity analysis removed the 111 IHC/special-stain-tagged MALT slides without refitting or changing the threshold; it was post hoc.
+
+Reader material consisted of provisional aggregate counts. Individual decisions, reference labels, experience, randomization, blinding and presentation conditions await hospital record incorporation. Paired comparisons and assisted-reader outcomes were not inferred from aggregates. Region displays reused original images and linked main-evaluation and interpretation scores; their sampled bags differed. Exact crop matching and automated contour overlap checked image provenance, not pathological correctness. No local image enhancement or replacement of selected tissue was performed. Supplementary Methods document sampling and geometry.
+
+\subsection{Statistical analysis}
+
+The analysis unit was the WSI. AUROC measured rank discrimination; AUPRC denotes average precision \citep{ref18}. Threshold metrics used 0.5 unless explicitly labeled otherwise. Balanced accuracy averaged sensitivity and specificity. Brier score was mean squared score error, with constant predictions based on training or evaluation prevalence supplied as descriptive references; the evaluation-prevalence reference uses evaluation labels.
+
+Original AUROC, average-precision and F1 intervals used 2,000 class-stratified WSI bootstrap samples; proportion intervals used Wilson's method \citep{ref19}. Additional paired external AUROC intervals used 10,000 class-stratified bootstrap samples, resampling the same slides across models. Exact McNemar tests assessed discordant threshold decisions. Intervals and comparisons are descriptive, unadjusted for multiplicity, and conditional on fixed predictions; they do not incorporate model selection, patient clustering, prior external reuse, or training/bag variation. No unprovided patient grouping was inferred. Random-state records and supplementary training summaries are provided in Supplementary Methods.
+
+Metric regeneration used Python, NumPy, pandas, SciPy and scikit-learn. Original figure assets were retained in this revision. Full runtime versions, hashes and supplementary implementation details accompany the source materials. \missing{[MISSING M02: original training hardware and historical dependency versions.]}

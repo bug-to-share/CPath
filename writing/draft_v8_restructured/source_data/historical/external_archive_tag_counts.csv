@@ -1,0 +1,5 @@
+cohort,archive_stain_tag,label,n,correct_at_0_5,median_probability
+MALT_BJ,H&E-like,1,33,23,0.8767744302749634
+MALT_BJ,IHC / special stain,1,111,111,0.8331143856048584
+MALT_HE,H&E,1,8,8,0.9670195877552032
+SS_BJ,SS (slide series),0,16,11,0.0543047320097684

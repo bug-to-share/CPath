@@ -1,0 +1,34 @@
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern,textcomp}
+\usepackage[a4paper,margin=22mm,headheight=14pt]{geometry}
+\usepackage{amsmath,amssymb,graphicx,booktabs,array,longtable,tabularx}
+\usepackage{xcolor,microtype,needspace,placeins,etoolbox}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[font=small,labelfont=bf,justification=raggedright,singlelinecheck=false]{caption}
+\usepackage{fancyhdr}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{lineno}
+\urlstyle{same}
+\definecolor{pendingcolor}{RGB}{140,80,40}
+\newcommand{\pending}[1]{{\color{pendingcolor}\textnormal{[#1]}}}
+\newcommand{\blankfield}[1]{\textemdash\,\textsuperscript{\pending{#1}}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt plus 1pt minus 1pt}
+\setlength{\emergencystretch}{2em}
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\linespread{1.06}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small MALT--SS whole-slide classification}
+\fancyhead[R]{\small Research manuscript}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.65}
+\setlength{\textfloatsep}{14pt plus 2pt minus 2pt}
+\makeatletter
+\setlength{\@fptop}{0pt}\setlength{\@fpsep}{14pt}\setlength{\@fpbot}{0pt plus 1fil}
+\makeatother

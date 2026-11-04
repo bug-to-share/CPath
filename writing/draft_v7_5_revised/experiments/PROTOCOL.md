@@ -1,0 +1,14 @@
+# Fixed-checkpoint supplementary analyses (v6)
+
+Protocol recorded before the new inference outputs were inspected. Date: 2026-11-04.
+
+The target remains the existing MALT–SS task, the existing 49 internal evaluation slides and the author-reviewed 168 external slides. No cohort, split, checkpoint, model membership or clinical annotation is changed. Hospital-held fields remain pending import.
+
+1. Reproduce the original Hybrid, ABMIL, CLAM-SB-style and RRTMIL-style internal predictions and Hybrid external predictions using the original input row order and sampling rule. Tolerance: maximum score difference <= 0.00003 and identical threshold-0.5 decisions. Stop for investigation if either condition fails.
+2. Evaluate the three comparator checkpoints on exactly the external Hybrid reference bags. Compare whole implementations, not isolated aggregation mechanisms. Preserve all model outputs, including negative comparisons. Threshold is fixed at 0.5; no tuning.
+3. With the fixed Hybrid checkpoint, draw 20 additional 512-row bags per evaluation slide. The 32-bit RNG seed is the first four bytes (little endian) of SHA256 of `20261104|scope|study_slide_id|repeat_id`, with repeat IDs 1–20. Sample without replacement when at least 512 rows exist, otherwise with replacement. Sort sampled row indices only for internal slides with at least 512 rows, matching that scope's historical implementation. Preserve exact indices, unique row counts and seeds. These technical repeats measure input sampling variability, not retraining or additional biological replicates.
+4. Report per-slide score SD, range and threshold crossing across the 20 draws; AUROC per complete-cohort draw; descriptive 20-bag mean-score performance, explicitly secondary and not a replacement for historical results. Use all repeats, without selecting a favorable bag.
+5. Record internal model variables on the reference bags: latent-bank margins, prototype winner counts, five gate scalings and five vector norms. Independently check the instrumented forward calculation against the original forward. These are diagnostics, not pathology labels or causal attributions. No post-hoc intervention is used to manufacture mechanism claims.
+6. Compute class-stratified paired bootstrap intervals for external model differences with 10,000 draws and seed 20261104. Slides are the units; hospital patient mappings are pending. Preserve fixed input sampling in that calculation. Wilson intervals for class-specific proportions. Repeat-draw distributions are not confidence intervals.
+
+Runtime is restricted to physical GPU index 3 (NVIDIA UUID recorded by the runner), float32, eval mode, no checkpoint updates. Record current dependencies separately from the unrecovered historical training environment. Original data and v5 artifacts remain unchanged.

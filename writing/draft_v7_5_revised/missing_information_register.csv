@@ -1,0 +1,38 @@
+file,line,marker
+sections/declarations.tex,2,"[MISSING A04: confirm the institution-approved public release scope, repository identifier and access route for raw WSIs and clinical records.]"
+sections/declarations.tex,4,"[MISSING A05: supply the author-controlled code repository, release licence and trained Hybrid weight-access arrangement.]"
+sections/declarations.tex,6,[AUTHOR CHECK A03: insert the informed-consent or waiver statement and applicable external-material and continuing-review provisions from the hospital records.]
+sections/declarations.tex,8,"[MISSING A06: acknowledgements, funding bodies, grant identifiers and funder roles.]"
+sections/declarations.tex,10,"[MISSING A07: author-specific contributions to clinical data collection, pathological review, model development, analysis and writing.]"
+sections/declarations.tex,12,[AUTHOR CHECK A08: confirm the final declaration for all authors.]
+sections/extended_methods_archive.tex,12,[MISSING M01: recover the exact UNI2-h weight-file checksum and downloaded checkpoint revision used for feature extraction.]
+sections/extended_methods_archive.tex,33,"[MISSING R01: hospital-held individual reader decisions and protocol, including experience, randomization, blinding and case presentation; pending incorporation.]"
+sections/extended_methods_archive.tex,41,"[MISSING P01/P03: specimen linkage and original calibration for the illustrative photomicrographs, and pathology-confirmed regional descriptions.]"
+sections/extended_methods_archive.tex,74,"[MISSING M02: recover the original training GPU and historical Python, PyTorch, CUDA and dependency versions.]"
+sections/figures.tex,28,[MISSING R01/R02: hospital-held individual reader records and subsequent paired analysis.]
+sections/figures.tex,35,[MISSING P03: pathology-confirmed regional descriptions.]
+sections/frontmatter.tex,2,"[MISSING A01: author names, affiliations and author order]"
+sections/frontmatter.tex,5,[MISSING A02: corresponding author and contact details]
+sections/methods.tex,4,[AUTHOR CHECK C05: confirm the provenance of the separate HE-directory material.]
+sections/methods.tex,4,"[MISSING C02/C06: patient linkage, dates, clinical characteristics and reference-standard details.]"
+sections/methods.tex,6,[AUTHOR CHECK A03: insert consent or waiver and external-material/continuing-review provisions from the hospital records.]
+sections/methods.tex,12,"[MISSING C04: finalized eligibility, exclusion and manual-review criteria.]"
+sections/methods.tex,12,[MISSING C03: pathology-confirmed stains and specimen metadata.]
+sections/methods.tex,16,[MISSING M01: exact downloaded UNI2-h revision and weight checksum.]
+sections/methods.tex,48,[MISSING M02: original training hardware and historical dependency versions.]
+sections/relocated_numeric_tables.tex,74,[MISSING R01/R02: verify reader aggregates using individual records and complete paired comparisons.]
+sections/results.tex,4,"[MISSING C02: hospital-held patient linkage, patient counts, dates and clinical characteristics; patient-level separation remains unverified.]"
+sections/results.tex,8,[MISSING C03/C04: hospital-confirmed stain/specimen metadata and finalized eligibility and review criteria.]
+sections/results.tex,46,"[MISSING R01/R02: hospital-held reader records, experience and review conditions; paired analyses pending.]"
+sections/results.tex,57,"[MISSING P01/P03: specimen linkage and calibration of illustrative photomicrographs, and pathological assessment of model-selected regions.]"
+sections/supplement_content.tex,328,[MISSING P03: pathology-confirmed descriptions of the selected regions.]
+sections/supplement_content.tex,393,[MISSING P01: specimen linkage and original calibration; no new physical scale has been inferred.]
+sections/tables.tex,10,[MISSING C02]
+sections/tables.tex,11,[MISSING C02]
+sections/tables.tex,12,[MISSING C02]
+sections/tables.tex,13,[MISSING C02]
+sections/tables.tex,14,[MISSING C02]
+sections/tables.tex,15,[MISSING C02]
+sections/tables.tex,16,[MISSING C02]
+sections/tables.tex,20,"[MISSING C02: add age, sex, clinical features, collection dates and verified patient counts. Hospital-held records; pending incorporation.]"
+sections/tables.tex,98,[MISSING R01/R02: verify reader aggregates using individual records and complete paired comparisons.]

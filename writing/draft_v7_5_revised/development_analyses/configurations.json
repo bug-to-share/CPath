@@ -1,0 +1,38 @@
+{
+  "screen_seeds": [
+    17,
+    29,
+    43
+  ],
+  "additional_seeds": [
+    59,
+    71
+  ],
+  "variants": [
+    "hybrid_control",
+    "attention_control",
+    "hybrid_l2",
+    "attention_l2",
+    "attention_mask",
+    "direct_attention",
+    "subspace_attention",
+    "subspace_largebatch",
+    "hybrid_twobag",
+    "hybrid_consistency"
+  ],
+  "candidate_variants": [
+    "hybrid_l2",
+    "attention_l2",
+    "attention_mask",
+    "direct_attention",
+    "subspace_attention",
+    "subspace_largebatch",
+    "hybrid_twobag",
+    "hybrid_consistency"
+  ],
+  "epochs": 30,
+  "selection_rule": "Internal mean AUROC, rounded12 tie then SD/parameters/ID",
+  "n_planned_neural_runs": 34,
+  "n_deterministic_controls": 2,
+  "historical_primary_replaced": false
+}
